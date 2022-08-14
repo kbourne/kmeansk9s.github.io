@@ -75,7 +75,21 @@
 							conducted on this particular part of the population, it does need to be taken into account that any of 
 							these results cannot be directly applied or generalized to the general population of dog owners.<br /> <br /> </p>
 							<i>Imbalanced Minority Class</i>
-							<p>As with most medical related datasets, the number of dogs that do not have cancer far outnumber the number that do, 
+							<p>
+								<figure>
+									<img src="pic_trulli.jpg" alt="Trulli" style="width:100%">
+									<figcaption>Fig.1 - Trulli, Puglia, Italy.</figcaption>
+								  </figure>
+							<span class="image right">
+								<figure>
+									<img src="images/imbalanced-dummy-most-freq.png" alt="" width="319" height="257" />
+									<figcaption>Fig.1 - Imbalanced Data - Dummy Classifier results - Strategy: most_frequent<br />
+												Accuracy: 93.7%     precision: 0%      recall: 0%      f1 score: 90.7%
+									</figcaption>
+								  </figure>
+								
+							</span>
+							As with most medical related datasets, the number of dogs that do not have cancer far outnumber the number that do, 
 							causing our dataset to be heavily imbalanced for this particular type of analysis.  As part of our analysis, we set
 							up “dummy” classifiers, including the “most frequent” classifier that basically just gives the most frequent data 
 							class as the prediction 100% of the time.  For imbalanced datasets, where the majority class is the vast majority 
@@ -83,7 +97,7 @@
 							Obviously, this high accuracy is misleading and does not mean we have an effective model, but it does show the 
 							imbalance in the data.</p>
 							<p>Imbalanced Data - Dummy Classifier results - Strategy:  most_frequent</p>
-							<span class="image right"><img src="images/imbalanced-dummy-most-freq.png" alt="" width="319" height="257" /></span>
+							
 							<p>Accuracy: 93.7%	precision: 0%		recall: 0% 	f1 score: 90.7%</p>
 							<p>However, as we will discuss, we were able to offset this using SMOTE to synthesize new minority class data 
 							and balance the classes.  This is the same most frequent dummy classifier with the balanced dataset:</p>
