@@ -91,14 +91,21 @@
 							of all of the data points, this classifier will show a high accuracy simply by predicting that majority class.  
 							Obviously, this high accuracy is misleading and does not mean we have an effective model, but it does show the 
 							imbalance in the data.</p>
-							<p>Imbalanced Data - Dummy Classifier results - Strategy:  most_frequent</p>
+							<!-- <p>Imbalanced Data - Dummy Classifier results - Strategy:  most_frequent</p>
 							
-							<p>Accuracy: 93.7%	precision: 0%		recall: 0% 	f1 score: 90.7%</p>
-							<p>However, as we will discuss, we were able to offset this using SMOTE to synthesize new minority class data 
+							<p>Accuracy: 93.7%	precision: 0%		recall: 0% 	f1 score: 90.7%</p> -->
+							<p>
+								<span class="image right">
+									<figure>
+										<img src="images/balanced-dummy-most-freq.png" alt="" width="319" height="257" />
+										<figcaption>Fig.2 - Balanced Data - Dummy Classifier results - Strategy:  most_frequent<br />
+											Accuracy: 49.9%	precision: 0%		recall: 0% 	f1 score: 33.2%<
+										</figcaption>
+									  </figure>
+								</span>
+							However, as we will discuss, we were able to offset this using SMOTE to synthesize new minority class data 
 							and balance the classes.  This is the same most frequent dummy classifier with the balanced dataset:</p>
-							<p>Balanced Data - Dummy Classifier results - Strategy:  most_frequent</p>
-							<span class="image right"><img src="images/balanced-dummy-most-freq.png" alt=""  width="319" height="257"/></span>
-							<p>Accuracy: 49.9%	precision: 0%		recall: 0% 	f1 score: 33.2%</p>
+							<p></p>
 							<p>We will show how this impacted the results of the analysis.</p>
 							<p><a id="ref1">&sup1;</a>Hoffman CL, Ladha C, Wilcox S. An actigraphy-based comparison of shelter dog and owned dog activity patterns. J Vet Behav. 2019;34:30–36. <a href="https://doi.org/10.1016/j.jveb.2019.08.001">doi:10.1016/j.jveb.2019.08.001</a></p>
 							<p><a id="ref2">&sup2;</a>Paynter AN, Dunbar MD, Creevy KE, Ruple A. Veterinary big data: when data goes to the dogs. Animals. 2021;11(7):1872. <a href="https://doi.org/10.1016/j.jveb.2019.08.001">doi:10.3390/ani11071872</a></p>
