@@ -51,16 +51,23 @@
 					<div id="main">
 						<div class="inner">
 							<h1>Applying Advanced Healthcare Analytics Techniques to Dog Healthcare</h1>
+							
 							<h2>Disease Trajectory Analysis: Cancer</h2>
+							
 							<p>August 22, 2022 - Ann Arbor, Michigan</p>
+							
 							<span class="image main"><img src="images/matthew-henry-2Ts5HnA67k8-unsplash.jpg" alt="" /></span>
+							
 							<p>It is widely recognized in the veterinary world that dogs provide a unique model for health research that parallels the human environment.  Dogs are exposed to similar social and environmental elements as humans, exhibiting increases in many chronic conditions with dynamics similar to human patterns<a href="#ref1">&sup1;</a>.  Dogs also have shorter life spans, which allows researchers to observe their entire life course in a much more condensed time frame<a href="#ref2">&sup2;</a>.  Human healthcare analytics has advanced rapidly in recent years, paving the way for new and deeper insights into how data can be used to improve human healthcare.  Due to the similarities between human and dog healthcare, we seek to bring these analytical innovations to dog healthcare, with the hopes of finding deeper insights that can help both canine and human care. This analysis begins a number of traditional machine learning analysis techniques applied to the dataset.  It will conclude with the application of two cutting edge techniques that have emerged in human healthcare, but applied to this dog healthcare set as a way to determine how new techniques in a similar field can help this field advance.</p>
+							
 							<h3>Dataset Challenges</h3>
+							
 							<p>To fully understand this analysis, we need to first understand the challenges we face with the Dog Age Project (DAP) 
 							dataset.  Challenges we identified include self-selection bias, an imbalance of the minority class versus the majority 
 							class in much of the binary classification related analysis we performed, and the relatively small size of the dataset.  
 							In addition, from a data science perspective, healthcare related data tends to have a set of common challenges that we 
 							also saw in our own dataset.</p>
+							
 							<i>Self Selection Bias</i>
 							<p>The respondents that the DAP data were collected from were self-nominated, and are a nonrandom sample of American dogs and their owners.   
 							Participants filled out hundreds of survey questions relating to their companion dog, indicating that they were likely a particularly 
@@ -74,8 +81,15 @@
 							affluent, and educated dog owner population.  While there is still value in the analysis that could be 
 							conducted on this particular part of the population, it does need to be taken into account that any of 
 							these results cannot be directly applied or generalized to the general population of dog owners.<br /> <br /> </p>
+							
 							<i>Imbalanced Minority Class</i>
-							<p>
+							<p>As with most medical related datasets, the number of dogs that do not have cancer far outnumber the number that do, 
+							causing our dataset to be heavily imbalanced for this particular type of analysis.  As part of our analysis, we set
+							up “dummy” classifiers, including the “most frequent” classifier that basically just gives the most frequent data 
+							class as the prediction 100% of the time.  For imbalanced datasets, where the majority class is the vast majority 
+							of all of the data points, this classifier will show a high accuracy simply by predicting that majority class.  
+							Obviously, this high accuracy is misleading and does not mean we have an effective model, but it does show the 
+							imbalance in the data.
 							<span class="image right">
 								<figure>
 									<img src="images/imbalanced-dummy-most-freq.png" alt="" width="319" height="257" />
@@ -84,28 +98,22 @@
 									</figcaption>
 								  </figure>
 							</span>
-							As with most medical related datasets, the number of dogs that do not have cancer far outnumber the number that do, 
-							causing our dataset to be heavily imbalanced for this particular type of analysis.  As part of our analysis, we set
-							up “dummy” classifiers, including the “most frequent” classifier that basically just gives the most frequent data 
-							class as the prediction 100% of the time.  For imbalanced datasets, where the majority class is the vast majority 
-							of all of the data points, this classifier will show a high accuracy simply by predicting that majority class.  
-							Obviously, this high accuracy is misleading and does not mean we have an effective model, but it does show the 
-							imbalance in the data.</p>
-							<!-- <p>Imbalanced Data - Dummy Classifier results - Strategy:  most_frequent</p>
+							</p>
 							
-							<p>Accuracy: 93.7%	precision: 0%		recall: 0% 	f1 score: 90.7%</p> -->
 							<p>
-								<span class="image right">
-									<figure>
-										<img src="images/balanced-dummy-most-freq.png" alt="" width="319" height="257" />
-										<figcaption>Fig.2 - Balanced Data - Dummy Classifier results - Strategy:  most_frequent<br />
-											Accuracy: 49.9%	precision: 0%		recall: 0% 	f1 score: 33.2%
-										</figcaption>
-									  </figure>
-								</span>
 							However, as we will discuss, we were able to offset this using SMOTE to synthesize new minority class data 
-							and balance the classes.  This is the same most frequent dummy classifier with the balanced dataset:</p>
+							and balance the classes.  This is the same most frequent dummy classifier with the balanced dataset:
+							<span class="image right">
+								<figure>
+									<img src="images/balanced-dummy-most-freq.png" alt="" width="319" height="257" />
+									<figcaption>Fig.2 - Balanced Data - Dummy Classifier results - Strategy:  most_frequent<br />
+										Accuracy: 49.9%	precision: 0%		recall: 0% 	f1 score: 33.2%
+									</figcaption>
+								  </figure>
+							</span>
+							</p>
 							<p>We will show how this impacted the results of the analysis.</p>
+							
 							<p><a id="ref1">&sup1;</a>Hoffman CL, Ladha C, Wilcox S. An actigraphy-based comparison of shelter dog and owned dog activity patterns. J Vet Behav. 2019;34:30–36. <a href="https://doi.org/10.1016/j.jveb.2019.08.001">doi:10.1016/j.jveb.2019.08.001</a></p>
 							<p><a id="ref2">&sup2;</a>Paynter AN, Dunbar MD, Creevy KE, Ruple A. Veterinary big data: when data goes to the dogs. Animals. 2021;11(7):1872. <a href="https://doi.org/10.1016/j.jveb.2019.08.001">doi:10.3390/ani11071872</a></p>
 						</div>
