@@ -58,7 +58,18 @@
 							
 							<span class="image main"><img src="images/matthew-henry-2Ts5HnA67k8-unsplash.jpg" alt="" /></span>
 							
-							<p>It is widely recognized in the veterinary world that dogs provide a unique model for health research that parallels the human environment.  Dogs are exposed to similar social and environmental elements as humans, exhibiting increases in many chronic conditions with dynamics similar to human patterns<a href="#ref1">&sup1;</a>.  Dogs also have shorter life spans, which allows researchers to observe their entire life course in a much more condensed time frame<a href="#ref2">&sup2;</a>.  Human healthcare analytics has advanced rapidly in recent years, paving the way for new and deeper insights into how data can be used to improve human healthcare.  Due to the similarities between human and dog healthcare, we seek to bring these analytical innovations to dog healthcare, with the hopes of finding deeper insights that can help both canine and human care. This analysis begins a number of traditional machine learning analysis techniques applied to the dataset.  It will conclude with the application of two cutting edge techniques that have emerged in human healthcare, but applied to this dog healthcare set as a way to determine how new techniques in a similar field can help this field advance.</p>
+							<p>It is widely recognized in the veterinary world that dogs provide a unique model for health research that parallels 
+								the human environment.  Dogs are exposed to similar social and environmental elements as humans, exhibiting increases
+								 in many chronic conditions with dynamics similar to human patterns<a href="#ref1">&sup1;</a>.  Dogs also have shorter 
+								 life spans, which allows researchers to observe their entire life course in a much more condensed time 
+								 frame<a href="#ref2">&sup2;</a>.  Human healthcare analytics has advanced rapidly in recent years, paving the 
+								 way for new and deeper insights into how data can be used to improve human healthcare.  Due to the similarities 
+								 between human and dog healthcare, we seek to bring these analytical innovations to dog healthcare, with the 
+								 hopes of finding deeper insights that can help both canine and human care. This analysis begins a number of 
+								 traditional machine learning analysis techniques applied to the dataset.  It will conclude with the application 
+								 of two cutting edge techniques that have emerged in human healthcare, but applied to this dog healthcare set 
+								 as a way to determine how new techniques in a similar field can help this field advance. And last, we should 
+								 consider the ethical implications of the data obtained from all of these owners and dogs, particularly when it comes to privacy.</p>
 							
 							<h3>Dataset Challenges</h3>
 							
@@ -113,6 +124,28 @@
 							</span>
 							</p>
 							<p>We will show how this impacted the results of the analysis.</p>
+							<i>Dataset Size</i>
+							<p>This dataset is relatively large in the dog data world, with 27,541 dogs represented, 1,751 of which have associated 
+							cancer records.  It is on the smaller size for common datasets within the areas of human healthcare and cancer.  
+							For example, the National Cancer Institute provides a number of key datasets ranging in size from 1,000 to 44,000 patients 
+							(<a href="https://datacommons.cancer.gov/data#key-datasets" target="_blank" rel="noopener noreferrer">https://datacommons.cancer.gov/data#key-datasets</a>.   
+							And compared to datasets that are used in general with many of the machine learning approaches we used, particularly the neural networks, 
+							this is a relatively small dataset. </p>
+							
+							<i>Self Selection Bias</i>
+							<p>Because we were dealing with a disease that appears over time, typically during a diagnosis at a veterinarian visit, 
+							we structured the data in a time based way, taking the medical records for each dog, adding the cancer diagnosis 
+							(when there was one), and essentially ending up with a time series based dataset.  However, we still maintained 
+							the “static” or non-time based data about the dog as well, such as the gender, whether it was neutered or not, 
+							and other similar static data points.  Having data structured in this way presents a number of challenges for 
+							our analysis that is common in the medical field, as well as any other field with varying numbers of time series 
+							over varying dates mixed with static data.  These relatively unique challenges include:</p>
+							<ol>
+								<li>You are working with multiple streams of measurement that are often sparse and irregularly (and informatively) sampled.</li>
+								<li>It is often necessary to forecast multiple outcomes rather than a single outcome, and these outcomes themselves may change over time since dog participants with one chronic disease typically develop other long-term conditions.</li>
+								<li>True clinical states tend to be inherently unobservable, as the timing of the diagnosis may not reliably indicate the timing of the onset of the disease.</li>
+								<li>Much like humans, it is important to factor in the heterogeneity of the dog participants, which may lead to many possible patterns that can be forecasted and complicate the prediction models.</li>
+							  </ol>
 							
 							<p><a id="ref1">&sup1;</a>Hoffman CL, Ladha C, Wilcox S. An actigraphy-based comparison of shelter dog and owned dog activity patterns. J Vet Behav. 2019;34:30–36. <a href="https://doi.org/10.1016/j.jveb.2019.08.001">doi:10.1016/j.jveb.2019.08.001</a></p>
 							<p><a id="ref2">&sup2;</a>Paynter AN, Dunbar MD, Creevy KE, Ruple A. Veterinary big data: when data goes to the dogs. Animals. 2021;11(7):1872. <a href="https://doi.org/10.1016/j.jveb.2019.08.001">doi:10.3390/ani11071872</a></p>
