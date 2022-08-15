@@ -270,7 +270,9 @@
 							</p>
 							<ol>
 								<li>“General” Approach - where we take each record of data, and predict at that point in time, does the dog have cancer.</li>
-								<li>“Forward-Step” Approach - where we predict if the dog will have cancer in the next time period.</li>
+								<li>“Forward-Step” Approach - where we predict if the dog will have cancer in the next time period. This approach is
+									more similar to the final ASSM approach, which is predicting disease trajectory based on previous temporal steps.
+								</li>
 							</ol>
 
 							<i>First Round of Analysis</i>
@@ -307,6 +309,52 @@
 									</figcaption>
 								  </figure>
 							</span>
+							<span class="image right"><img src="images/general-data-round2-modeltests.png" alt="" /></span>
+							<span class="image right">
+								<figure>
+									<img src="images/general-data-round2-modeltests.png" alt="" width="319" height="257" />
+									<figcaption>Fig.4 - Green indicates the best performing models for each metric.<br />
+												Lighter green indicates the 2nd best performance.<br />
+												Yellow indicates the third best performance.
+									</figcaption>
+								  </figure>
+							</span>
+							<span class="image right"><img src="images/general-data-round3-modeltests.png" alt="" /></span>
+							<span class="image right">
+								<figure>
+									<img src="images/general-data-round3-modeltests.png" alt="" width="319" height="257" />
+									<figcaption>Fig.5 - Green indicates the best performing models for each metric.<br />
+												Lighter green indicates the 2nd best performance.<br />
+												Yellow indicates the third best performance.
+									</figcaption>
+								  </figure>
+							</span>
+							<span class="image right"><img src="images/general-data-round4-modeltests.png" alt="" /></span>
+							<span class="image right">
+								<figure>
+									<img src="images/general-data-round4-modeltests.png" alt="" width="319" height="257" />
+									<figcaption>Fig.6 - Green indicates the best performing models for each metric.<br />
+												Lighter green indicates the 2nd best performance.<br />
+												Yellow indicates the third best performance.
+									</figcaption>
+								  </figure>
+							</span>
+							<i>Final Comparison</i>
+							<p>
+							Ultimately, the best predictive performance among these models came from the "general" data pattern version,
+							but with using SMOTE to synthesize and balance the minority class with the majority class:
+							<span class="image right"><img src="images/general-data-round2-modeltests.png" alt="" /></span>
+							<span class="image right">
+								<figure>
+									<img src="images/genera2-data-round2-modeltests.png" alt="" width="319" height="257" />
+									<figcaption>Fig.7 - Green indicates the best performing models for each metric.<br />
+												Lighter green indicates the 2nd best performance.<br />
+												Yellow indicates the third best performance.
+									</figcaption>
+								  </figure>
+							</span>
+							</p>
+							
 							</p>
 
 
