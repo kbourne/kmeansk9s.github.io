@@ -503,7 +503,7 @@
 							<span class="image fit">
 								<figure>
 									<img src="images/model2-validation-results.png" alt=""/>
-									<figcaption><b>Fig.15 - XGBoost Test Versus Validation Results on both data approaches, indicating the model can generalize well to new data.</b>
+									<figcaption><b>Fig.15 - XGBoost Test Versus Validation Results on both data approaches is significantly off, indicating the model cannot generalize well to new data.</b>
 									</figcaption>
 								  </figure>
 							</span>
@@ -524,9 +524,8 @@
 							<p>
 								For XGBoost, we see the Recall score for the general data approach drop from 81.5% (test) to 64.4% (validation), with FNs
 								dropping from 187 (test) to 179 (validation).  For the forward step approach, we see the recall score increase
-								from 56.1% (test) to 67.8% (validation), and the FNs drop from 25 (test) to 19 (validation).  As was suggested
-								before, the model seemed to be overfitting itself too much to get the lowest possible FN, while making major 
-								sacrifices of FPs, and the was not generalizable to the new dataset.  
+								from 56.1% (test) to 67.8% (validation), and the FNs drop from 25 (test) to 19 (validation).  The model is not generalizable to 
+								the new dataset.  
 							</p>
 							
 							<p>
