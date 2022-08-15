@@ -312,10 +312,10 @@
 							the data (just a direct prediction on if the dog has cancer at the present data point time):
 							</p>
 							<!-- <span class="image main"><img src="images/general-data-round1-modeltests.png" alt="" /></span> -->
-							<span class="image main">
+							<span class="image fit">
 								<figure>
 									<img src="images/general-data-round1-modeltests.png" alt="" width="319" height="257" />
-									<figcaption>Fig.3 - GREEN - #1 performance for that metric, LIGHT GREEN - #2, YELLOW - #3, LIGHT YELLOW - #4<br />
+									<figcaption><b>Fig.4 - GREEN - #1 performance for that metric, LIGHT GREEN - #2, YELLOW - #3, LIGHT YELLOW - #4</b>
 									</figcaption>
 								  </figure>
 							</span>
@@ -323,10 +323,18 @@
 							As you can see, Decision Trees are performing the best with a recall score of 0.5638, and Random Forest Not too far behind
 							with 0.5556.  But in general these are fairly low scores.  What happens when we use SMOTE to balance the data through synthesizing
 							the minority class (dogs with cancer)?
-							<span class="image right"><img src="images/general-data-round2-modeltests.png" alt="" /></span>
+							<!-- <span class="image right"><img src="images/general-data-round2-modeltests.png" alt="" /></span> -->
+							<span class="image fit">
+								<figure>
+									<img src="images/general-data-round2-modeltests.png" alt="" width="319" height="257" />
+									<figcaption><b>Fig.4 - GREEN - #1 performance for that metric, LIGHT GREEN - #2, YELLOW - #3, LIGHT YELLOW - #4</b>
+									</figcaption>
+									</figcaption>
+								  </figure>
+							</span>
 							<p>We have increased the recall score to 0.8025 for Ridge Regression, 0.7963 with Linear Kernel based SVC, and 0.7922 
 							with logistic regression. Furthermore, we see significant improvements in the recall score across all of the models.
-							For example, 
+							For example, the Gradient Boost Classifier jumped from 0.0041 to 0.6687.
 							</p>
 
 							As you can see, blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
@@ -335,16 +343,7 @@
 							blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
 
 							</p>
-							<!-- 
-							<span class="image right">
-								<figure>
-									<img src="images/general-data-round2-modeltests.png" alt="" width="319" height="257" />
-									<figcaption>Fig.4 - Green indicates the best performing models for each metric.<br />
-												Lighter green indicates the 2nd best performance.<br />
-												Yellow indicates the third best performance.
-									</figcaption>
-								  </figure>
-							</span>
+							<!--
 							<span class="image right"><img src="images/general-data-round3-modeltests.png" alt="" /></span>
 							<span class="image right">
 								<figure>
@@ -369,8 +368,8 @@
 							<p>
 							Ultimately, the best predictive performance among these models came from the "general" data pattern version,
 							but with using SMOTE to synthesize and balance the minority class with the majority class:
-							<span class="image right"><img src="images/general-data-round2-modeltests.png" alt="" /></span>
-							<span class="image right">
+							<!-- <span class="image fit"><img src="images/general-data-round2-modeltests.png" alt="" /></span> -->
+							<span class="image fit">
 								<figure>
 									<img src="images/genera2-data-round2-modeltests.png" alt="" width="319" height="257" />
 									<figcaption>Fig.7 - Green indicates the best performing models for each metric.<br />
