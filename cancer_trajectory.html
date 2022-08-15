@@ -475,6 +475,12 @@
 								  </figure>
 							</span>
 							<p>
+								As you can see here, the validation results are very similar to the test results for both the general and forward step data approaches.
+								And below you see the confusion matrices are very similar as well, with the general data approach on the left, and the forward step
+								data approach on the right.  The Random Forest model is known to be overfitting resistant, which seems to be what we are seeing here. 
+								We are most concerned with the recall score, which was 59.5% (test) vs 59.4% (validation) for the general data approach, and reducing 
+								FNs, which was 200 (test) vs 204 (validation), a slight improvement over the test results.  For the forward step data approach, the recall score 
+								score was 21.1% (test) vs 22.0% (validation) and FNs were 45 (test) vs 46 (validation), also a slight improvement over the test results.
 								<span class="image right">
 									<figure>
 										<img src="images/model1b-valid-matrix.png" alt=""/>
@@ -489,12 +495,7 @@
 										</figcaption>
 									  </figure>
 								</span>
-								As you can see here, the validation results are very similar to the test results for both the general and forward step data approaches.
-								And below you see the confusion matrices are very similar as well, with the general data approach on the left, and the forward step
-								data approach on the right.  The Random Forest model is known to be overfitting resistant, which seems to be what we are seeing here. 
-								We are most concerned with the recall score, which was 59.5% (test) vs 59.4% (validation) for the general data approach, and reducing 
-								FNs, which was 200 (test) vs 204 (validation), a slight improvement over the test results.  For the forward step data approach, the recall score 
-								score was 21.1% (test) vs 22.0% (validation) and FNs were 45 (test) vs 46 (validation), also a slight improvement over the test results. 
+								 
 							</p>
 							
 							
