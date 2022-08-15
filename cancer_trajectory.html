@@ -435,8 +435,37 @@
 							<p>
 								As you can see, XGBoost and KNN performed the best overall, depending on which approach you are looking at.  For the "general"
 								data approach, which, again, is where the models were simply predicting if cancer was present in the dog given the current health
-								data, XGBoost performed the best when optimized for either recall or PRC-AUC.  For the "forward step" data, where we were looking specifically at the steps just before a dog
-								was diagnosed with cancer to see if we can predict cancer, the KNN model performed the best when optimized for either metric.
+								data, XGBoost performed the best when optimized for either recall or PRC-AUC.  For the "forward step" data, where we were looking 
+								specifically at the steps just before a dog was diagnosed with cancer to see if we can predict cancer, the KNN model performed the 
+								best when optimized for either metric.
+							</p>
+							<p>
+								As mentioned earlier, it is critical to keep the number of FALSE-NEGATIVES (FN) low.  But in these cases, the number of FALSE-POSITIVES 
+								(FP) that result as a trade-off can become too significant to ignore.  For example, if we focus solely on the recall score, reducing 
+								FALSE-NEGATIVES as much as possible, we get a relatively low 90 FNs and relatively impressive 81.5% recall score from XGBoost, 
+								compared to 157 FPs and a 67.7% recall score for Ridge Regression as the next closest performance.  This is significant, a 74% increase 
+								in FNs, but XGBoost also resulted in 3852 FPs, compared to the other models that ranged from 40 to 362 for the top 3 performers for 
+								FPs.  It seems the model has fitted itself in a way that significantly overestimates the FPs which intuitively seems like a poor 
+								solution in general.  Interestingly enough, the XGBoost that was optimized for PRC-AUC, still kept the FNs relatively low at 195, but had 
+								the lowest FALSE positive of 200 among the entire group.  Within the group that was optimized for the recall score, the Random Forest
+								, with 197 FNs and 205 FPs, performed very similar to the XGBoost (with 195 FNs and 200 FPs) that was optimized for PRC-AUC.  But the Random
+								Forest model is also an interpretable model.  For this reason, given the importance outlined above to provide an interpretable model 
+								to clinicians, we would suggest to use Random Forest among these different models.  In general though, with the Random Forest recall
+								score of 59.5%, the scores in general were not very high.
+							</p>
+							<p>
+								The "forward step" data prediction results, which had significantly less data to work with, performed even worse than the "general" data
+								approach.  In this case, you see many of the models struggling to even provide TRUE-POSITIVE(TP) predictions, suggesting fitting issues.
+								And those models that were able to predict more TPs, like the KNN, had significantly more FPs than the best performing models in the 
+								FP category.  Ultimately though, if one were to select a model, it would likely be the KNN model, given its relatively high 61.4% recall
+								score and relatively low FNs.  In general though, given the poor performance of this model combined with the lack of data for this 
+								approach, we will likely see significantly better results as more dog data comes in, which we will talk about in the summary.
+							</p>
+							<i>Final Models with Validation Data</i>
+							<p>RUN Random Forest, XGBoost, & KNN with the validation data for one final check</p>
+							<i>interpretability of the Random Forest Model</i>
+							<p>
+								Given that we have a Random Forest Model, we will look at the influence 
 							</p>
 							
 
