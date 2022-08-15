@@ -310,8 +310,8 @@
 							<p>
 								It is important to note at this point what our key metrics were to determine the success of these models.
 								Given that we are focused on cancer, it is clearly important to minimize missing a prediction of cancer
-								when the dog actually has it.  This is called a FALSE-NEGATIVE.  We ultimately decided that Recall gave us
-								the best chance of reducing FALSE-NEGATIVES.  Often, this meant more FALSE-POSITIVES, where we are saying 
+								when the dog actually has it.  This is called a FALSE-NEGATIVE (FN).  We ultimately decided that Recall gave us
+								the best chance of reducing FNs.  Often, this meant more FALSE-POSITIVEs (FPs), where we are saying 
 								the dog has cancer, but it does not.  But after careful consideration, we decided this was the best trade 
 								off in this particular case.  We will talk more about this later, when we also considered the 
 								Precision-Recall-Curve Area-Under-the-Curve (PRC AUC), but still came back to Recall as our primary metric.
@@ -440,9 +440,9 @@
 								best when optimized for either metric.
 							</p>
 							<p>
-								As mentioned earlier, it is critical to keep the number of FALSE-NEGATIVES (FN) low.  But in these cases, the number of FALSE-POSITIVES 
+								As mentioned earlier, it is critical to keep the number of FN low.  But in these cases, the number of FPs 
 								(FP) that result as a trade-off can become too significant to ignore.  For example, if we focus solely on the recall score, reducing 
-								FALSE-NEGATIVES as much as possible, we get a relatively low 90 FNs and relatively impressive 81.5% recall score from XGBoost, 
+								FN as much as possible, we get a relatively low 90 FNs and relatively impressive 81.5% recall score from XGBoost, 
 								compared to 157 FPs and a 67.7% recall score for Ridge Regression as the next closest performance.  This is significant, a 74% increase 
 								in FNs, but XGBoost also resulted in 3852 FPs, compared to the other models that ranged from 40 to 362 for the top 3 performers for 
 								FPs.  It seems the model has fitted itself in a way that significantly overestimates the FPs which intuitively seems like a poor 
@@ -475,24 +475,28 @@
 								  </figure>
 							</span>
 							<p>
+								<span class="image right">
+									<figure>
+										<img src="images/model1b-valid-matrix.png" alt=""/>
+										<figcaption><b>Fig.12 - </b>
+										</figcaption>
+									  </figure>
+								</span>
+								<span class="image right">
+									<figure>
+										<img src="images/model1a-valid-matrix.png" alt=""/>
+										<figcaption><b>Fig.12 - </b>
+										</figcaption>
+									  </figure>
+								</span>
 								As you can see here, the validation results are very similar to the test results for both the general and forward step data approaches.
 								And below you see the confusion matrices are very similar as well, with the general data approach on the left, and the forward step
-								data approach on the right.
+								data approach on the right.  The Random Forest model is known to be overfitting resistant, which seems to be what we are seeing here. 
+								We are most concerned with the recall score, which was 59.5% (test) vs 59.4% (validation) for the general data approach, and reducing 
+								FNs, which was 200 (test) vs 204 (validation), a slight improvement over the test results.  For the forward step data approach, the recall score 
+								score was 21.1% (test) vs 22.0% (validation) and FNs were 45 (test) vs 46 (validation), also a slight improvement over the test results. 
 							</p>
-							<span class="image right">
-								<figure>
-									<img src="images/model1a-valid-matrix.png" alt=""/>
-									<figcaption><b>Fig.12 - </b>
-									</figcaption>
-								  </figure>
-							</span>
-							<span class="image right">
-								<figure>
-									<img src="images/model1b-valid-matrix.png" alt=""/>
-									<figcaption><b>Fig.12 - </b>
-									</figcaption>
-								  </figure>
-							</span>
+							
 							
 							<i>Interpretability of the Random Forest and XGBoost Models</i>
 							<p>
