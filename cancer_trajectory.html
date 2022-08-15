@@ -336,7 +336,7 @@
 							<span class="image fit">
 								<figure>
 									<img src="images/general-data-round2-modeltests.png" alt="" />
-									<figcaption><b>Fig.4 - GREEN - #1 performance for that metric, LIGHT GREEN - #2, YELLOW - #3, LIGHT YELLOW - #4</b>
+									<figcaption><b>Fig.5 - GREEN - #1 performance for that metric, LIGHT GREEN - #2, YELLOW - #3, LIGHT YELLOW - #4</b>
 									</figcaption>
 								  </figure>
 							</span>
@@ -353,14 +353,14 @@
 							<span class="image fit">
 								<figure>
 									<img src="images/general-data-round3-modeltests.png" alt=""/>
-									<figcaption><b>Fig.4 - GREEN - #1 performance for that metric, LIGHT GREEN - #2, YELLOW - #3, LIGHT YELLOW - #4</b>
+									<figcaption><b>Fig.6 - GREEN - #1 performance for that metric, LIGHT GREEN - #2, YELLOW - #3, LIGHT YELLOW - #4</b>
 									</figcaption>
 								  </figure>
 							</span>
 							<span class="image fit">
 								<figure>
-									<img src="images/general-data-round4-modeltests.png" alt="" />
-									<figcaption><b>Fig.4 - GREEN - #1 performance for that metric, LIGHT GREEN - #2, YELLOW - #3, LIGHT YELLOW - #4</b>
+									<img src="images/general-data-round4-modeltests.png" alt=""/>
+									<figcaption><b>Fig.7 - GREEN - #1 performance for that metric, LIGHT GREEN - #2, YELLOW - #3, LIGHT YELLOW - #4</b>
 									</figcaption>
 								  </figure>
 							</span>
@@ -369,14 +369,74 @@
 								Ultimately, the best predictive performance among these models came from the "general" data pattern version,
 								but with using SMOTE to synthesize and balance the minority class with the majority class.  Given these results, 
 								we move forward to round two where we will apply grid searches to several of the better performing models to 
-								see how much more we can optimize their hyperparameters.  
+								see how much more we can optimize their hyperparameters.  NOTE: The MLP Neural Network was not included in this round,
+								as it was planned to run the more thorough hyperparameter tuning in the next round on this model anyway.
+							</p>
+							<i>Second Round of Analysis - Narrowed Focus - Hyperparameter Tuning (Round 2)</i>
+							<p>
+								This round of analysis focused on applying a Halving Grid Search to these models: 
+							</p>
+							<ul>
+								<li>Random Forest</li>
+								<li>Decision Tree</li>
+								<li>XGBoost</li>
+								<li>KNN</li>
+								<li>Ridge Regression</li>
+								<li>SVC</li>
+								<li>MLP NNet</li>
+							</ul>
+							<p>
+								This chart indicates the results of the models after several thousand combinations of hyperparameters per model, run
+								on the "general" data, and optimized for PRC-AUC:
+								<span class="image fit">
+									<figure>
+										<img src="images/gridsearch-scenario1.png" alt=""/>
+										<figcaption><b>Fig.8 - GREEN - #1 performance for that metric, YELLOW - #2, RED - Last</b>
+										</figcaption>
+									  </figure>
+								</span>
 							</p>
 							<p>
-							STRERAIGHT.
+								This chart indicates the results of the models after several thousand combinations of hyperparameters per model, run
+								on the "forward step" data, and optimized for PRC-AUC:
+								<span class="image fit">
+									<figure>
+										<img src="images/gridsearch-scenario2.png" alt=""/>
+										<figcaption><b>Fig.9 - GREEN - #1 performance for that metric, YELLOW - #2, RED - Last</b>
+										</figcaption>
+									  </figure>
+								</span>
 							</p>
-
-
+							<p>
+								This chart indicates the results of the models after several thousand combinations of hyperparameters per model, run
+								on the "general" data, and optimized for the recall score:
+								<span class="image fit">
+									<figure>
+										<img src="images/gridsearch-scenario3.png" alt=""/>
+										<figcaption><b>Fig.10 - GREEN - #1 performance for that metric, YELLOW - #2, RED - Last</b>
+										</figcaption>
+									  </figure>
+								</span>
+							</p>
+							<p>
+								This chart indicates the results of the models after several thousand combinations of hyperparameters per model, run
+								on the "forward step" data, and optimized for the recall score:
+								<span class="image fit">
+									<figure>
+										<img src="images/gridsearch-scenario4.png" alt=""/>
+										<figcaption><b>Fig.11 - GREEN - #1 performance for that metric, YELLOW - #2, RED - Last</b>
+										</figcaption>
+									  </figure>
+								</span>
+							</p>
+							<p>
+								As you can see, XGBoost and KNN performed the best overall, depending on which approach you are looking at.  For the "general"
+								data approach, which, again, is where the models were simply predicting if cancer was present in the dog given the current health
+								data, XGBoost performed the best when optimized for either recall or PRC-AUC.  For the "forward step" data, where we were looking specifically at the steps just before a dog
+								was diagnosed with cancer to see if we can predict cancer, the KNN model performed the best when optimized for either metric.
+							</p>
 							
+
 							<p><a id="ref1">&sup1;</a>Hoffman CL, Ladha C, Wilcox S. An actigraphy-based comparison of shelter dog and owned dog activity patterns. J Vet Behav. 2019;34:30-36. <a href="https://doi.org/10.1016/j.jveb.2019.08.001">doi:10.1016/j.jveb.2019.08.001</a></p>
 							<p><a id="ref2">&sup2;</a>Paynter AN, Dunbar MD, Creevy KE, Ruple A. Veterinary big data: when data goes to the dogs. Animals. 2021;11(7):1872. <a href="https://doi.org/10.1016/j.jveb.2019.08.001">doi:10.3390/ani11071872</a></p>
 							<p><a id="ref3">&sup3;</a>Association AVM. AVMA Pet Ownership and Demographics Sourcebook. Schaumburg; 2018.<a href="https://scholar-google-com.proxy.lib.umich.edu/scholar_lookup?hl=en&publication_year=2018&author=AVM+Association&title=AVMA+Pet+Ownership+and+Demographics+Sourcebook">Google Scholar</a></p>
