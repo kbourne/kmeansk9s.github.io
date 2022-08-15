@@ -288,6 +288,18 @@
 
 							<i>First Round of Analysis</i>
 							<p>
+								It should be noted that this first approach, using “traditional” machine learning algorithms, 
+								is not intended to be directly comparable to the ASSM model.  The ASSM model predicts the next
+								 state based on all previous states.  It can tell us how important each of the previous states 
+								 is in predicting the next state.  This is much different than applying a binary classifier, 
+								 like we will in the first approach, and simply predicting if cancer exists or not.  
+								 The binary classifiers will still provide valuable insight into understanding this data and 
+								 what factors play into dogs developing cancer, but we will not be able to compare these 
+								 initial models directly to the HMM or ASSM models, like we are comparing them to each other 
+								 with metrics like recall and the precision-recall-curve area-under-the-curve (PRC-AUC) score.
+							</p>
+
+							<p>
 								For each of the data approaches, we used classification models to do binary classification.  We started the analysis with 
 								a broad search across 13 different types of models for a baseline comparison of model performance with this data, including:
 							</p>
@@ -651,6 +663,7 @@
 								importance shifts from “main breed” to “weight range” as the second most important factor, 
 								and age is indicates as having significantly more predictive power.
 							</p>
+							<h3>Approach #2 - Hidden Markov Model</h3>
 							
 							<br />
 							<br />
