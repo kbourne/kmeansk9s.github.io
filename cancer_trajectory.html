@@ -664,7 +664,19 @@
 								and age is indicates as having significantly more predictive power.
 							</p>
 							<h3>Approach #2 - Hidden Markov Model</h3>
-							
+							<p>
+								We will eventually show the ASSM model tuned to 4 “states” of cancer.  As a more direct comparison to the 
+								ASSM model than the traditional models run in the 1st approach, we set up a Hidden Markov Model based on 
+								ones commonly used to analyze disease states in healthcare.  The number of states is fed into the 
+								GaussianHMM as the number of components.   We trained the HMM on the same data as the ASSM, and then 
+								tested with test and validation data. The training data is considered the observations X that the HMM 
+								model must find the hidden internal states Z.  The hidden states are not observed directly.  The model 
+								is trained on the observations, and then the predict method is tasked with finding the most likely 
+								state sequence corresponding to the testing “observations” fed to the model.  The model can be “scored” 
+								(i.e. evaluated) with a log likelihood loss function. In our case, we obtained a loss of 7.2E+4, and 
+								the validation score was even higher at 5.6E+4.  These loss functions are comparable to the ASSM model 
+								we will evaluate in a moment.
+							</p>
 							<br />
 							<br />
 							<br />
