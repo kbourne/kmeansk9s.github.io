@@ -565,14 +565,87 @@
 							<p>
 								With KNNs, the recall score for the general data approach drops from 63% (test) to 59.4% (validation), and the 
 								FNs drop from 187 (test) 179 (validation).  For the forward step data approach, we see recall improve 
-								from 61.4% (test) to 67.8% (validation), and the FNs drop from 25 (test) to 19 (validation).  
+								from 61.4% (test) to 67.8% (validation), and the FNs drop from 25 (test) to 19 (validation).  This is not 
+								a large difference, and may just be attributable to the new data differences.  
 							</p>
-							
+							<br />
+							<br />
+							<br />
+							<br />
+							<br />
+							<br />
+							<br />
+							<br />
+							<br />
+							<br />
 							
 							<i>Interpretability of the Random Forest and XGBoost Models</i>
 							<p>
-								Given that we have a Random Forest Model, we will look at the influence 
+								Given that we have models that are tree-based, we have the opportunity to gain some insights into what 
+								features in the data have the most predictive power.  Let's take a look at the Random Forest model 
+								to see how it is viewing the data features:
 							</p>
+							<span class="image fit">
+								<figure>
+									<img src="images/rf-inflence.png" alt=""/>
+									<figcaption><b>Fig.21 - </b>
+									</figcaption>
+								  </figure>
+							</span>
+							<p>
+								The feature_importances in the Random Forest model are the features that are more closely related 
+								with the dependent variable and contribute more for variation of that dependent variable.  
+							</p>
+							<p>
+								Three features stand out from the others with the most predictive power: age, main breed, and weight range.   
+								Things like eating feces, whether or not they are spayed/neutered, and their sleep hours at night seem to 
+								have little influence on if they are predicted to have cancer.  
+							</p>
+							<p>
+								However, if you look at the influence chart for the XGBoost model, it focuses on insurance, urination 
+								in the home frequency, and fear of unknown human touch as the key predictive features.
+							</p>
+							</p>
+							<span class="image fit">
+								<figure>
+									<img src="images/xg-inflence.png" alt=""/>
+									<figcaption><b>Fig.22 - </b>
+									</figcaption>
+								  </figure>
+							</span>
+							<p>
+							If you look at feature importance based on the mean decrease in impurity, you can see the variability 
+							for these features:
+							</p>
+							<span class="image fit">
+								<figure>
+									<img src="images/impurity-inflence.png" alt=""/>
+									<figcaption><b>Fig.22 - </b>
+									</figcaption>
+								  </figure>
+							</span>
+							<p>
+								As this chart indicates, those three features are still by far the largest influencers on 
+								predicting if the dog has cancer.
+							</p>
+							<p>
+								However, we have many unique values, and therefore a high cardinality.  In this case, it 
+								is recommended to base the feature importance on feature permutation, which removes the 
+								bias towards high-cardinality features.
+							</p>
+							<span class="image fit">
+								<figure>
+									<img src="images/impurity-inflence.png" alt=""/>
+									<figcaption><b>Fig.22 - </b>
+									</figcaption>
+									</figure>
+							</span>
+							<p>
+								In this case, the same features are still detected as the most important, but the relative 
+								importance shifts from “main breed” to “weight range” as the second most important factor, 
+								and age is indicates as having significantly more predictive power.
+							</p>
+							
 							<br />
 							<br />
 							<br />
