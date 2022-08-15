@@ -448,10 +448,11 @@
 								FPs.  It seems the model has fitted itself in a way that significantly overestimates the FPs which intuitively seems like a poor 
 								solution in general.  Interestingly enough, the XGBoost that was optimized for PRC-AUC, still kept the FNs relatively low at 195, but had 
 								the lowest FALSE positive of 200 among the entire group.  Within the group that was optimized for the recall score, the Random Forest
-								, with 197 FNs and 205 FPs, performed very similar to the XGBoost (with 195 FNs and 200 FPs) that was optimized for PRC-AUC.  But the Random
-								Forest model is also an interpretable model.  For this reason, given the importance outlined above to provide an interpretable model 
-								to clinicians, we would suggest to use Random Forest among these different models.  In general though, with the Random Forest recall
-								score of 59.5%, the scores in general were not very high.
+								, with 197 FNs and 205 FPs, performed very similar to the XGBoost (with 195 FNs and 200 FPs) that was optimized for PRC-AUC.  Random
+								Forest models are considered to be more interpretable than XGBoost, but this is changing as new approaches, like LIME, are emerging to
+								make models like XGBoost more interpretable.  For this reason, we suggest to continue to monitor the performance of both types of models
+								as new data is added to the dataset. In general though, with the Random Forest recall score of 59.5% and XGBoost recall score of 59.3%, 
+								the scores in general were not very high.
 							</p>
 							<p>
 								The "forward step" data prediction results, which had significantly less data to work with, performed even worse than the "general" data
@@ -462,8 +463,33 @@
 								approach, we will likely see significantly better results as more dog data comes in, which we will talk about in the summary.
 							</p>
 							<i>Final Models with Validation Data</i>
-							<p>RUN Random Forest, XGBoost, & KNN with the validation data for one final check</p>
-							<i>interpretability of the Random Forest Model</i>
+							<p>We did hold out an extra final validation dataset to ensure our final models performed as expected in the “real” world.  
+								We ran Random Forest, XGBoost, & KNN with the validation data for one final check and to make sure our models can 
+								generalize their predictions to new data.
+							</p>
+							<span class="image left">
+								<figure>
+									<img src="images/model1-validation-results.png" alt=""/>
+									<figcaption><b>Fig.12 - </b>
+									</figcaption>
+								  </figure>
+							</span>
+							<span class="image middle">
+								<figure>
+									<img src="images/model1a-valid-matrix.png" alt=""/>
+									<figcaption><b>Fig.12 - </b>
+									</figcaption>
+								  </figure>
+							</span>
+							<span class="image right">
+								<figure>
+									<img src="images/model1b-valid-matrix.png" alt=""/>
+									<figcaption><b>Fig.12 - </b>
+									</figcaption>
+								  </figure>
+							</span>
+							
+							<i>Interpretability of the Random Forest and XGBoost Models</i>
 							<p>
 								Given that we have a Random Forest Model, we will look at the influence 
 							</p>
