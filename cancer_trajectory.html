@@ -288,10 +288,10 @@
 								<li>Support Vector Classifier (SVC) - Linear Kernel</li>
 								<li>K-Nearest Neighbors</li>
 								<li>Decision Tree</li>
-								<li>Ridge Regression</li>
 								<li>Random Forest</li>
 								<li>Gaussian Naive-Bayes</li>
 								<li>Bernoulli Naive-Bayes</li>
+								<li>Gradient Boost</li>
 								<li>XGBoost</li>
 								<li>Multi-layer Perceptron Neural Network</li>
 							</ul>
@@ -311,24 +311,31 @@
 							The following chart summarizes the initial results with no data synthesizing, and just a general approach to predictions from
 							the data (just a direct prediction on if the dog has cancer at the present data point time):
 							</p>
-							<span class="image right"><img src="images/general-data-round1-modeltests.png" alt="" /></span>
-							<!-- <span class="image right">
+							<!-- <span class="image main"><img src="images/general-data-round1-modeltests.png" alt="" /></span> -->
+							<span class="image main">
 								<figure>
 									<img src="images/general-data-round1-modeltests.png" alt="" width="319" height="257" />
-									<figcaption>Fig.3 - Green indicates the best performing models for each metric.<br />
-												Lighter green indicates the 2nd best performance.<br />
-												Yellow indicates the third best performance.
+									<figcaption>Fig.3 - GREEN - #1 performance for that metric, LIGHT GREEN - #2, YELLOW - #3, LIGHT YELLOW - #4<br />
 									</figcaption>
-								  </figure> -->
+								  </figure>
 							</span>
 							<p>
+							As you can see, Decision Trees are performing the best with a recall score of 0.5638, and Random Forest Not too far behind
+							with 0.5556.  But in general these are fairly low scores.  What happens when we use SMOTE to balance the data through synthesizing
+							the minority class (dogs with cancer)?
+							<span class="image right"><img src="images/general-data-round2-modeltests.png" alt="" /></span>
+							<p>We have increased the recall score to 0.8025 for Ridge Regression, 0.7963 with Linear Kernel based SVC, and 0.7922 
+							with logistic regression. Furthermore, we see significant improvements in the recall score across all of the models.
+							For example, 
+							</p>
+
 							As you can see, blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
 							blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
 							blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
 							blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
 
 							</p>
-							<!-- <span class="image right"><img src="images/general-data-round2-modeltests.png" alt="" /></span>
+							<!-- 
 							<span class="image right">
 								<figure>
 									<img src="images/general-data-round2-modeltests.png" alt="" width="319" height="257" />
