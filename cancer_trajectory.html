@@ -159,11 +159,14 @@
 							
 							<h3>Dataset</h3>
 							<p>
-							The dataset has 27,541 dogs represented.  We have 77,576 time-based healthcare records, or just under 3 records per dog, as well 
-							as an additional 1,751 cancer diagnosis records.   We combined multiple data tables in this dataset so that we have the sequence 
-							of healthcare visits for each dog, removing any dog with less than 4 sequence entries.  This reduced our dataset to 40,712 
-							time-based records, with each row containing both static and temporal data.  The dataset contains several hundred datapoints 
-							about both the dog and the dog's owner, but omits any personally identifiable information.  
+							The DAP dataset provides cross-sectional data from the baseline survey of owners of 27,541 living companion dogs that 
+							were enrolled in the DAP as of December 21, 2020.  There are 77,576 temporal-based healthcare records, or just under 
+							3 records per dog, as well as an additional 1,751 cancer diagnosis records.  Survey questions covered the history of 
+							the cancer or tumors, including organ sites and histologic type.  We combined multiple data tables in this dataset so 
+							that we have the sequence of healthcare visits for each dog, removing any dog with less than 4 sequence entries.  
+							This reduced our dataset to 40,712 time-based records, with each row containing both static and temporal data.  
+							The dataset contains several hundred datapoints about both the dog and the dog's owner, but omits any personally 
+							identifiable information.   
 							</p>
 							
 							<h3>Current State of Human Healthcare Machine Learning</h3>
@@ -173,8 +176,9 @@
 							is to take one of the machine learning innovations in human healthcare and attempt to apply it to dog healthcare data, 
 							with the hopes of finding deeper insights that can help both canine and human care.   One area of healthcare that has 
 							rapidly advanced in recent years is using disease data to forecast disease trajectories, which is often used with 
-							cancer research.  Since cancer is also a common disease among canines, and our dataset has cancer-specific data 
-							collected, we focused on one of the latest approaches to forecasting disease trajectories, the Attentive State Space Model (ASSM), 
+							cancer research.  Since cancer is also a common disease among canines, being the leading cause of canine morbidity 
+							and mortality<a href="#ref3">&sup3;,</a><a href="#ref4">&sup4;</a>, and our dataset has cancer-specific data collected, 
+							we focused on one of the latest approaches to forecasting disease trajectories, the Attentive State Space Model (ASSM), 
 							and applied it to our dog cancer/health dataset.   The ASSM is a relatively robust approach to forecasting, applying 
 							a memoryful state transition that depends on the patient's entire clinical history, can handle both static and temporal data, 
 							and is interpretable and directly usable by the clinician in a medical setting. The deep learning component is based on 
@@ -189,28 +193,28 @@
 
 							<i>Forecasting disease trajectories</i>
 							<p>
-								Chronic diseases such as cancer and endocrine diseases (which includes thyroid and diabetes) progress slowly throughout 
-								a dog participant's lifetime.  This progression demonstrates “stages” that are typically shown through veterinary visits 
-								and diagnosis. One area in human healthcare that is growing rapidly is precision medicine, which focuses on the forecasting 
-								of personalized disease trajectories by observing the patterns found in the temporal relationships between related diseases.  
-								The goal here is to build a similar disease progression model for dogs from their healthcare records, to be able to provide 
-								personalized dynamic forecasts for each dog participant.  In addition, this will enable us to identify new insights regarding 
-								dog disease progression mechanisms at the population level, at various sub-group levels like breeds, and at a personalized level.
+							Chronic diseases such as cancer and endocrine diseases (which includes thyroid and diabetes) progress slowly throughout 
+							a dog participant's lifetime.  This progression demonstrates “stages” that are typically shown through veterinary visits 
+							and diagnosis. One area in human healthcare that is growing rapidly is precision medicine, which focuses on the forecasting 
+							of personalized disease trajectories by observing the patterns found in the temporal relationships between related diseases.  
+							The goal here is to build a similar disease progression model for dogs from their healthcare records, to be able to provide 
+							personalized dynamic forecasts for each dog participant.  In addition, this will enable us to identify new insights regarding 
+							dog disease progression mechanisms at the population level, at various sub-group levels like breeds, and at a personalized level.
 							</p>
 							<p>
-								This kind of forecasting in a time series scenario introduces a number of challenges.  Healthcare data typically contains 
-								a large number of streams of measurement that tend to be sparse and irregularly sampled.  You typically have to forecast 
-								multiple outcomes, rather than just one, and those outcomes may even change over time as a dog participant with one chronic 
-								disease is likely to develop other long-term complications.  A key challenge in this environment is that the timing of the 
-								diagnosis is often not a reliable indication of the timing of the disease onset.  And similar to humans, dogs exhibit a 
-								wide heterogeneity of physiologies and characteristics that can lead to a breadth of patterns that need to be identified.
+							This kind of forecasting in a time series scenario introduces a number of challenges.  Healthcare data typically contains 
+							a large number of streams of measurement that tend to be sparse and irregularly sampled.  You typically have to forecast 
+							multiple outcomes, rather than just one, and those outcomes may even change over time as a dog participant with one chronic 
+							disease is likely to develop other long-term complications.  A key challenge in this environment is that the timing of the 
+							diagnosis is often not a reliable indication of the timing of the disease onset.  And similar to humans, dogs exhibit a 
+							wide heterogeneity of physiologies and characteristics that can lead to a breadth of patterns that need to be identified.
 							</p>
 							<p>
-								We will look at three different approaches to this problem.  First, we will apply the wide variety of traditional 
-								binary classification machine learning models to simply predict if a dog has cancer based on their current conditions.  
-								Second, we will use what is considered the most current approach (in human healthcare) for making disease trajectory 
-								forecasts, a Markovina state-space model.  Almost all current models for disease progression are based on variations 
-								of the hidden markov model (HMM).  Here are some example models currently in use in the field:
+							We will look at three different approaches to this problem.  First, we will apply the wide variety of traditional 
+							binary classification machine learning models to simply predict if a dog has cancer based on their current conditions.  
+							Second, we will use what is considered the most current approach (in human healthcare) for making disease trajectory 
+							forecasts, a Markovina state-space model.  Almost all current models for disease progression are based on variations 
+							of the hidden markov model (HMM).  Here are some example models currently in use in the field:
 							</p>
 							<ul>
 								<li>C. H. Jackson, L. D. Sharples, S. G. Thompson, S. W. Duffy, and E. Couto. Multistate markov models for disease 
@@ -224,36 +228,37 @@
 									International Conference on Machine Learning, 2017. http://proceedings.mlr.press/v70/alaa17a/alaa17a.pdf </li>
 							</ul>
 							<p>
-								The models provide an easily interpretable disease dynamic that can be summarized through a single matrix of probabilities 
-								describing transition rates about the disease states.  These models do provide the patient with useful predictions of risk 
-								for the progression of their disease, but they struggle to provide a clinician with an interpretable representation of disease pathology.   
-								These models also simplify inference because they factorize in a way that makes efficient passing of messages backward and forward.  
-								Unfortunately, memoryless Markov models assume that the patient's current state separates the future trajectory from their clinical history, 
-								making these models incapable of properly explaining the heterogeneity in the patients' progression trajectories.  
-								This is a crucial part of explaining complex chronic disease progressions that have multiple diseases.
+							The models provide an easily interpretable disease dynamic that can be summarized through a single matrix of probabilities 
+							describing transition rates about the disease states.  These models do provide the patient with useful predictions of risk 
+							for the progression of their disease, but they struggle to provide a clinician with an interpretable representation of disease pathology.   
+							These models also simplify inference because they factorize in a way that makes efficient passing of messages backward and forward.  
+							Unfortunately, memoryless Markov models assume that the patient's current state separates the future trajectory from their clinical history, 
+							making these models incapable of properly explaining the heterogeneity in the patients' progression trajectories.  
+							This is a crucial part of explaining complex chronic disease progressions that have multiple diseases.
 							</p>
 							<p>
-								In order to address these many challenges, our third and final approach will be to work with one of the newer approaches 
-								to forecasting disease trajectories, called Attentive State-Space Models, based on this paper:
+							In order to address these many challenges, our third and final approach will be to work with one of the newer approaches 
+							to forecasting disease trajectories, called Attentive State-Space Models, based on this paper:
 							</p>
 							<ul>
 								<li>Ahmed M Alaa and Mihaela van der Schaar. Attentive State-Space Modeling of Disease Progression.  
 									33rd Conference on Neural Information Information Processing Systems, 2019. https://papers.nips.cc/paper/2019/file/1d0932d7f57ce74d9d9931a2c6db8a06-Paper.pdf </li>
 							</ul>
 							<p>
-								This model addresses the memoryless states by providing a memoryful state transition that depends on the patient's 
-								entire clinical history.  According to the paper for this model, this is “the first deep probabilistic model that 
-								provides clinically meaningful latent representations, with non-Markovian state dynamics that can be made arbitrarily 
-								complex while remaining interpretable.”  This key distinction is intended to provide clinicians with a model that is 
-								interpretable and delivers on the predictive power of deep learning models.  The deep learning component is based on 
-								recurrent neural networks (RNNs) that are meant to capture more complex state dynamics, and provide the memoryful state 
-								mentioned above.  This allows the model to learn hidden disease states from observational data in an unsupervised fashion.
+							This model addresses the memoryless states by providing a memoryful state transition that depends on the patient's 
+							entire clinical history.  According to the paper for this model, this is “the first deep probabilistic model that 
+							provides clinically meaningful latent representations, with non-Markovian state dynamics that can be made arbitrarily 
+							complex while remaining interpretable.”  This key distinction is intended to provide clinicians with a model that is 
+							interpretable and delivers on the predictive power of deep learning models.  The deep learning component is based on 
+							recurrent neural networks (RNNs) that are meant to capture more complex state dynamics, and provide the memoryful state 
+							mentioned above.  This allows the model to learn hidden disease states from observational data in an unsupervised fashion.
 							</p>
 
 							
-							
-							<p><a id="ref1">&sup1;</a>Hoffman CL, Ladha C, Wilcox S. An actigraphy-based comparison of shelter dog and owned dog activity patterns. J Vet Behav. 2019;34:30–36. <a href="https://doi.org/10.1016/j.jveb.2019.08.001">doi:10.1016/j.jveb.2019.08.001</a></p>
+							<p><a id="ref1">&sup1;</a>Hoffman CL, Ladha C, Wilcox S. An actigraphy-based comparison of shelter dog and owned dog activity patterns. J Vet Behav. 2019;34:30-36. <a href="https://doi.org/10.1016/j.jveb.2019.08.001">doi:10.1016/j.jveb.2019.08.001</a></p>
 							<p><a id="ref2">&sup2;</a>Paynter AN, Dunbar MD, Creevy KE, Ruple A. Veterinary big data: when data goes to the dogs. Animals. 2021;11(7):1872. <a href="https://doi.org/10.1016/j.jveb.2019.08.001">doi:10.3390/ani11071872</a></p>
+							<p><a id="ref3">&sup3;</a>Vail DM, Thamm DH, Liptak JM. Why worry about cancer in pets? In: DM Vail, D Thamm, J Liptak, eds. Withrow & MacEwen's Small Animal Clinical Oncology. 6th edn. St. ed. Saunders Elsevier; 2019.<a href="https://scholar-google-com.proxy.lib.umich.edu/scholar_lookup?hl=en&publication_year=2019&author=DM+Vail&author=DH+Thamm&author=JM+Liptak&title=Withrow+%26+MacEwen%27s+Small+Animal+Clinical+Oncology">Google Scholar</a></p>
+							<p><a id="ref4">&sup4;</a>Urfer SR, Kaeberlein M, Promislow DEL, Creevy KE. Lifespan of companion dogs seen in three independent primary care veterinary clinics in the United States. Canine Med Genet. 2020; 7(1): 7.<a href="https://scholar-google-com.proxy.lib.umich.edu/scholar_lookup?hl=en&volume=7&publication_year=2020&pages=7&journal=Canine+Med+Genet&issue=1&author=SR+Urfer&author=M+Kaeberlein&author=DEL+Promislow&author=KE+Creevy&title=Lifespan+of+companion+dogs+seen+in+three+independent+primary+care+veterinary+clinics+in+the+United+States">Google Scholar</a></p>
 						</div>
 					</div>
 
