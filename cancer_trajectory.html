@@ -297,19 +297,38 @@
 							</ul>
 							<i>Initial Models - Comparison (Round 1)</i>
 							<p>
+							It is important to note at this point what our key metrics were to determine the success of these models.
+							Given that we are focused on cancer, it is clearly important to minimize missing a prediction of cancer
+							when the dog actually has it.  This is called a FALSE-NEGATIVE.  We ultimately decided that Recall gave us
+							the best chance of reducing FALSE-NEGATIVES.  Often, this meant more FALSE-POSITIVES, where we are saying 
+							the dog has cancer, but it does not.  But after careful consideration, we decided this was the best trade 
+							off in this particular case.  We will talk more about this later, when we also considered the 
+							Precision-Recall-Curve Area-Under-the-Curve (PRC AUC), but still came back to Recall as our primary metric.
+							So while we will look at other metrics with these charts, we will ulimately select models that give us the best
+							recall.  
+							</p>
+							<p>
 							The following chart summarizes the initial results with no data synthesizing, and just a general approach to predictions from
 							the data (just a direct prediction on if the dog has cancer at the present data point time):
+							</p>
 							<span class="image right"><img src="images/general-data-round1-modeltests.png" alt="" /></span>
-							<span class="image right">
+							<!-- <span class="image right">
 								<figure>
 									<img src="images/general-data-round1-modeltests.png" alt="" width="319" height="257" />
 									<figcaption>Fig.3 - Green indicates the best performing models for each metric.<br />
 												Lighter green indicates the 2nd best performance.<br />
 												Yellow indicates the third best performance.
 									</figcaption>
-								  </figure>
+								  </figure> -->
 							</span>
-							<span class="image right"><img src="images/general-data-round2-modeltests.png" alt="" /></span>
+							<p>
+							As you can see, blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+							blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+							blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+							blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+
+							</p>
+							<!-- <span class="image right"><img src="images/general-data-round2-modeltests.png" alt="" /></span>
 							<span class="image right">
 								<figure>
 									<img src="images/general-data-round2-modeltests.png" alt="" width="319" height="257" />
@@ -338,7 +357,7 @@
 												Yellow indicates the third best performance.
 									</figcaption>
 								  </figure>
-							</span>
+							</span> -->
 							<i>Final Comparison</i>
 							<p>
 							Ultimately, the best predictive performance among these models came from the "general" data pattern version,
