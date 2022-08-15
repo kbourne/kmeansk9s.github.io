@@ -92,7 +92,14 @@
 							affluent, and educated dog owner population.  While there is still value in the analysis that could be 
 							conducted on this particular part of the population, it does need to be taken into account that any of 
 							these results cannot be directly applied or generalized to the general population of dog owners.<br /> <br /> </p>
-							
+
+							<p>
+							In limited comparisons to a nationwide survey data from 2016 that was published in the American Veterinary Medicine 
+							Association (AVMA) Pet Ownership & Demographics Sourcebook<a href="#ref3">&sup3;</a>, the dogs from the DAP survey 
+							and the AVMA survey have the same proportion of dogs that are mixed breed (51%) vs. purebred (49%), but the DAP 
+							survey participants have a much lower proportion of dogs that come from households with less than a $20,000 annual income (2% vs. 13%).
+							</p>
+
 							<i>Imbalanced Minority Class</i>
 							<p>As with most medical related datasets, the number of dogs that do not have cancer far outnumber the number that do, 
 							causing our dataset to be heavily imbalanced for this particular type of analysis.  As part of our analysis, we set
@@ -159,14 +166,17 @@
 							
 							<h3>Dataset</h3>
 							<p>
-							The DAP dataset provides cross-sectional data from the baseline survey of owners of 27,541 living companion dogs that 
+							The DAP dataset provides data from the baseline survey of owners of 27,541 living companion dogs that 
 							were enrolled in the DAP as of December 21, 2020.  There are 77,576 temporal-based healthcare records, or just under 
 							3 records per dog, as well as an additional 1,751 cancer diagnosis records.  Survey questions covered the history of 
 							the cancer or tumors, including organ sites and histologic type.  We combined multiple data tables in this dataset so 
 							that we have the sequence of healthcare visits for each dog, removing any dog with less than 4 sequence entries.  
 							This reduced our dataset to 40,712 time-based records, with each row containing both static and temporal data.  
-							The dataset contains several hundred datapoints about both the dog and the dog's owner, but omits any personally 
-							identifiable information.   
+							In addition, we set up the data in a “forward” looking way, so that we can predict future occurrences of cancer 
+							based on the current health status of the dog.  This will be discussed further in future sections.  The dataset 
+							contains several hundred datapoints about both the dog and the dog's owner, but omits any personally identifiable information.  
+							The DAP dataset is stored on the Google Cloud Platform, and can be accessed through the Terra workspace at the Broad 
+							Institute of MIT and Harvard.
 							</p>
 							
 							<h3>Current State of Human Healthcare Machine Learning</h3>
@@ -177,7 +187,7 @@
 							with the hopes of finding deeper insights that can help both canine and human care.   One area of healthcare that has 
 							rapidly advanced in recent years is using disease data to forecast disease trajectories, which is often used with 
 							cancer research.  Since cancer is also a common disease among canines, being the leading cause of canine morbidity 
-							and mortality<a href="#ref3">&sup3;,</a><a href="#ref4">&#x2074;</a>, and our dataset has cancer-specific data collected, 
+							and mortality<a href="#ref4">&#x2074;,</a><a href="#ref5">&#x2075;</a>, and our dataset has cancer-specific data collected, 
 							we focused on one of the latest approaches to forecasting disease trajectories, the Attentive State Space Model (ASSM), 
 							and applied it to our dog cancer/health dataset.   The ASSM is a relatively robust approach to forecasting, applying 
 							a memoryful state transition that depends on the patient's entire clinical history, can handle both static and temporal data, 
@@ -254,11 +264,58 @@
 							mentioned above.  This allows the model to learn hidden disease states from observational data in an unsupervised fashion.
 							</p>
 
+							<h3>Current State of Human Healthcare Machine Learning</h3>
+							<p>
+							We took two approaches to how we set up the dataset prior to running it through our machine learning-based analysis:
+							</p>
+							<ol>
+								<li>“General” Approach - where we take each record of data, and predict at that point in time, does the dog have cancer.</li>
+								<li>“Forward-Step” Approach - where we predict if the dog will have cancer in the next time period.</li>
+							</ol>
+
+							<i>First Round of Analysis</i>
+							<p>
+							For each of the data approaches, we used classification models to do binary classification.  We started the analysis with 
+							a broad search across 13 different types of models for a baseline comparison of model performance with this data, including:
+							</p>
+							<ul>
+								<li>Logistic Regression</li>
+								<li>Ridge Regression</li>
+								<li>Stochastic Gradient Descent (SGD)</li>
+								<li>Support Vector Classifier (SVC) - RBF Kernel</li>
+								<li>Support Vector Classifier (SVC) - Linear Kernel</li>
+								<li>K-Nearest Neighbors</li>
+								<li>Decision Tree</li>
+								<li>Ridge Regression</li>
+								<li>Random Forest</li>
+								<li>Gaussian Naive-Bayes</li>
+								<li>Bernoulli Naive-Bayes</li>
+								<li>XGBoost</li>
+								<li>Multi-layer Perceptron Neural Network</li>
+							</ul>
+							<i>Initial Models - Comparison (Round 1)</i>
+							<p>
+							The following chart summarizes the initial results with no data synthesizing, and just a general approach to predictions from
+							the data (just a direct prediction on if the dog has cancer at the present data point time):
+							<span class="image right"><img src="images/general-data-round1-modeltests.png" alt="" /></span>
+							<span class="image right">
+								<figure>
+									<img src="images/general-data-round1-modeltests.png" alt="" width="319" height="257" />
+									<figcaption>Fig.3 - Green indicates the best performing models for each metric.<br />
+												Lighter green indicates the 2nd best performance.<br />
+												Yellow indicates the third best performance.
+									</figcaption>
+								  </figure>
+							</span>
+							</p>
+
+
 							
 							<p><a id="ref1">&sup1;</a>Hoffman CL, Ladha C, Wilcox S. An actigraphy-based comparison of shelter dog and owned dog activity patterns. J Vet Behav. 2019;34:30-36. <a href="https://doi.org/10.1016/j.jveb.2019.08.001">doi:10.1016/j.jveb.2019.08.001</a></p>
 							<p><a id="ref2">&sup2;</a>Paynter AN, Dunbar MD, Creevy KE, Ruple A. Veterinary big data: when data goes to the dogs. Animals. 2021;11(7):1872. <a href="https://doi.org/10.1016/j.jveb.2019.08.001">doi:10.3390/ani11071872</a></p>
-							<p><a id="ref3">&sup3;</a>Vail DM, Thamm DH, Liptak JM. Why worry about cancer in pets? In: DM Vail, D Thamm, J Liptak, eds. Withrow & MacEwen's Small Animal Clinical Oncology. 6th edn. St. ed. Saunders Elsevier; 2019.<a href="https://scholar-google-com.proxy.lib.umich.edu/scholar_lookup?hl=en&publication_year=2019&author=DM+Vail&author=DH+Thamm&author=JM+Liptak&title=Withrow+%26+MacEwen%27s+Small+Animal+Clinical+Oncology">Google Scholar</a></p>
-							<p><a id="ref4">&#x2074;</a>Urfer SR, Kaeberlein M, Promislow DEL, Creevy KE. Lifespan of companion dogs seen in three independent primary care veterinary clinics in the United States. Canine Med Genet. 2020; 7(1): 7.<a href="https://scholar-google-com.proxy.lib.umich.edu/scholar_lookup?hl=en&volume=7&publication_year=2020&pages=7&journal=Canine+Med+Genet&issue=1&author=SR+Urfer&author=M+Kaeberlein&author=DEL+Promislow&author=KE+Creevy&title=Lifespan+of+companion+dogs+seen+in+three+independent+primary+care+veterinary+clinics+in+the+United+States">Google Scholar</a></p>
+							<p><a id="ref3">&sup3;</a>Association AVM. AVMA Pet Ownership and Demographics Sourcebook. Schaumburg; 2018.<a href="https://scholar-google-com.proxy.lib.umich.edu/scholar_lookup?hl=en&publication_year=2018&author=AVM+Association&title=AVMA+Pet+Ownership+and+Demographics+Sourcebook">Google Scholar</a></p>
+							<p><a id="ref4">&#x2074;</a>Vail DM, Thamm DH, Liptak JM. Why worry about cancer in pets? In: DM Vail, D Thamm, J Liptak, eds. Withrow & MacEwen's Small Animal Clinical Oncology. 6th edn. St. ed. Saunders Elsevier; 2019.<a href="https://scholar-google-com.proxy.lib.umich.edu/scholar_lookup?hl=en&publication_year=2019&author=DM+Vail&author=DH+Thamm&author=JM+Liptak&title=Withrow+%26+MacEwen%27s+Small+Animal+Clinical+Oncology">Google Scholar</a></p>
+							<p><a id="ref5">&#x2075;</a>Urfer SR, Kaeberlein M, Promislow DEL, Creevy KE. Lifespan of companion dogs seen in three independent primary care veterinary clinics in the United States. Canine Med Genet. 2020; 7(1): 7.<a href="https://scholar-google-com.proxy.lib.umich.edu/scholar_lookup?hl=en&volume=7&publication_year=2020&pages=7&journal=Canine+Med+Genet&issue=1&author=SR+Urfer&author=M+Kaeberlein&author=DEL+Promislow&author=KE+Creevy&title=Lifespan+of+companion+dogs+seen+in+three+independent+primary+care+veterinary+clinics+in+the+United+States">Google Scholar</a></p>
 						</div>
 					</div>
 
