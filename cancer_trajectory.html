@@ -508,12 +508,7 @@
 									</figcaption>
 								  </figure>
 							</span>
-							<p>
-								For XGBoost, we see the Recall score for the general data approach drop from 81.5% (test) to 64.4% (validation), with FNs
-								dropping from 187 (test) to 179 (validation).  For the forward step approach, we see the recall score increase
-								from 56.1% (test) to 67.8% (validation), and the FNs drop from 25 (test) to 19 (validation).  
-							</p>
-							<span class="image left">
+							<span class="image right">
 								<figure>
 									<img src="images/model2a-valid-matrix.png" alt=""/>
 									<figcaption><b>Fig.16 - XGBoost Confusion Matrix - General Data Approach</b>
@@ -527,6 +522,12 @@
 									</figcaption>
 								  </figure>
 							</span>
+							<p>
+								For XGBoost, we see the Recall score for the general data approach drop from 81.5% (test) to 64.4% (validation), with FNs
+								dropping from 187 (test) to 179 (validation).  For the forward step approach, we see the recall score increase
+								from 56.1% (test) to 67.8% (validation), and the FNs drop from 25 (test) to 19 (validation).  
+							</p>
+							
 							<p>For KNNs, we are also seeing some slight differences:
 							</p>
 							<span class="image fit">
@@ -541,7 +542,7 @@
 								FNs drop from 187 (test) 179 (validation).  For the forward step data approach, we see recall improve 
 								from 61.4% (test) to 67.8% (validation), and the FNs drop from 25 (test) to 19 (validation).  
 							</p>
-							<span class="image left">
+							<span class="image right">
 								<figure>
 									<img src="images/model3a-valid-matrix.png" alt=""/>
 									<figcaption><b>Fig.19 - KNN Confusion Matrix - General Data Approach</b>
