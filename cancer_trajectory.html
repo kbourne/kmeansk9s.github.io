@@ -60,54 +60,62 @@
 							
 							<p>It is widely recognized in the veterinary world that dogs provide a unique model for health research that parallels 
 								the human environment.  Dogs are exposed to similar social and environmental elements as humans, exhibiting increases
-								 in many chronic conditions with dynamics similar to human patterns<a href="#ref1">&sup1;</a>.  Dogs also have shorter 
-								 life spans, which allows researchers to observe their entire life course in a much more condensed time 
-								 frame<a href="#ref2">&sup2;</a>.  Use of machine learning in human healthcare has advanced rapidly in recent years, 
-								 paving the way for new and deeper insights into how data can be used to improve human healthcare.   Due to the similarities 
-								 between human and dog healthcare, we seek to bring these analytical innovations to dog healthcare, with the 
-								 hopes of finding deeper insights that can help both canine and human care. This analysis begins a number of 
-								 traditional machine learning analysis techniques applied to the dataset.  It will conclude with the application 
-								 of two cutting edge techniques that have emerged in human healthcare, but applied to this dog healthcare set 
-								 as a way to determine how new techniques in a similar field can help this field advance. And last, we should 
-								 consider the ethical implications of the data obtained from all of these owners and dogs, particularly when it comes to privacy.</p>
+								in many chronic conditions with dynamics similar to human patterns<a href="#ref1">&sup1;</a>.  Dogs also have shorter 
+								life spans, which allows researchers to observe their entire life course in a much more condensed time 
+								frame<a href="#ref2">&sup2;</a>.  Use of machine learning in human healthcare has advanced rapidly in recent years, 
+								paving the way for new and deeper insights into how data can be used to improve human healthcare.   Due to the similarities 
+								between human and dog healthcare, we seek to bring these analytical innovations to dog healthcare, with the 
+								hopes of finding deeper insights that can help both canine and human care. This analysis begins a number of 
+								traditional machine learning analysis techniques applied to the dataset.  It will conclude with the application 
+								of two cutting edge techniques that have emerged in human healthcare, but applied to this dog healthcare set 
+								as a way to determine how new techniques in a similar field can help this field advance. And last, we should 
+								consider the ethical implications of the data obtained from all of these owners and dogs, particularly when it comes to privacy.
+							</p>
 							
 							<h3>Dataset Challenges</h3>
 							
-							<p>To fully understand this analysis, we need to first understand the challenges we face with the Dog Age Project (DAP) 
-							dataset.  Challenges we identified include self-selection bias, an imbalance of the minority class versus the majority 
-							class in much of the binary classification related analysis we performed, and the relatively small size of the dataset.  
-							In addition, from a data science perspective, healthcare related data tends to have a set of common challenges that we 
-							also saw in our own dataset.</p>
+							<p>
+								To fully understand this analysis, we need to first understand the challenges we face with the Dog Age Project (DAP) 
+								dataset.  Challenges we identified include self-selection bias, an imbalance of the minority class versus the majority 
+								class in much of the binary classification related analysis we performed, and the relatively small size of the dataset.  
+								In addition, from a data science perspective, healthcare related data tends to have a set of common challenges that we 
+								also saw in our own dataset.
+							</p>
 							
 							<i>Self Selection Bias</i>
-							<p>The respondents that the DAP data were collected from were self-nominated, and are a nonrandom sample of American dogs and their owners.   
-							Participants filled out hundreds of survey questions relating to their companion dog, indicating that they were likely a particularly 
-							dedicated set of dog owners with the time and capacity to fill out these surveys, and not fully representative of the overall 
-							dog-owning population.  During our exploratory data analysis, we quickly identified that the survey participants tended to be 
-							more affluent and well-educated than average, and minority populations are currently underrepresented.</p>
+							<p>
+								The respondents that the DAP data were collected from were self-nominated, and are a nonrandom sample of American dogs and their owners.   
+								Participants filled out hundreds of survey questions relating to their companion dog, indicating that they were likely a particularly 
+								dedicated set of dog owners with the time and capacity to fill out these surveys, and not fully representative of the overall 
+								dog-owning population.  During our exploratory data analysis, we quickly identified that the survey participants tended to be 
+								more affluent and well-educated than average, and minority populations are currently underrepresented.
+							</p>
 							<span class="image left"><img src="images/salaryhisto.png" alt="" /></span>
-							<p>This selection bias has likely resulted in a sample of individuals that is not representative of the overall dog 
-							owner population in the United States.  Ideally, we have a sample of data that is basically a mini version of 
-							the overall dog owner population, but in our case, our sample is more representative of the more passionate, 
-							affluent, and educated dog owner population.  While there is still value in the analysis that could be 
-							conducted on this particular part of the population, it does need to be taken into account that any of 
-							these results cannot be directly applied or generalized to the general population of dog owners.<br /> <br /> </p>
+							<p>
+								This selection bias has likely resulted in a sample of individuals that is not representative of the overall dog 
+								owner population in the United States.  Ideally, we have a sample of data that is basically a mini version of 
+								the overall dog owner population, but in our case, our sample is more representative of the more passionate, 
+								affluent, and educated dog owner population.  While there is still value in the analysis that could be 
+								conducted on this particular part of the population, it does need to be taken into account that any of 
+								these results cannot be directly applied or generalized to the general population of dog owners.<br /> <br /> 
+							</p>
 
 							<p>
-							In limited comparisons to a nationwide survey data from 2016 that was published in the American Veterinary Medicine 
-							Association (AVMA) Pet Ownership & Demographics Sourcebook<a href="#ref3">&sup3;</a>, the dogs from the DAP survey 
-							and the AVMA survey have the same proportion of dogs that are mixed breed (51%) vs. purebred (49%), but the DAP 
-							survey participants have a much lower proportion of dogs that come from households with less than a $20,000 annual income (2% vs. 13%).
+								In limited comparisons to a nationwide survey data from 2016 that was published in the American Veterinary Medicine 
+								Association (AVMA) Pet Ownership & Demographics Sourcebook<a href="#ref3">&sup3;</a>, the dogs from the DAP survey 
+								and the AVMA survey have the same proportion of dogs that are mixed breed (51%) vs. purebred (49%), but the DAP 
+								survey participants have a much lower proportion of dogs that come from households with less than a $20,000 annual income (2% vs. 13%).
 							</p>
 
 							<i>Imbalanced Minority Class</i>
-							<p>As with most medical related datasets, the number of dogs that do not have cancer far outnumber the number that do, 
-							causing our dataset to be heavily imbalanced for this particular type of analysis.  As part of our analysis, we set
-							up “dummy” classifiers, including the “most frequent” classifier that basically just gives the most frequent data 
-							class as the prediction 100% of the time.  For imbalanced datasets, where the majority class is the vast majority 
-							of all of the data points, this classifier will show a high accuracy simply by predicting that majority class.  
-							Obviously, this high accuracy is misleading and does not mean we have an effective model, but it does show the 
-							imbalance in the data.
+							<p>
+								As with most medical related datasets, the number of dogs that do not have cancer far outnumber the number that do, 
+								causing our dataset to be heavily imbalanced for this particular type of analysis.  As part of our analysis, we set
+								up “dummy” classifiers, including the “most frequent” classifier that basically just gives the most frequent data 
+								class as the prediction 100% of the time.  For imbalanced datasets, where the majority class is the vast majority 
+								of all of the data points, this classifier will show a high accuracy simply by predicting that majority class.  
+								Obviously, this high accuracy is misleading and does not mean we have an effective model, but it does show the 
+								imbalance in the data.
 							<span class="image right">
 								<figure>
 									<img src="images/imbalanced-dummy-most-freq.png" alt="" width="319" height="257" />
@@ -132,21 +140,24 @@
 							</p>
 							<p>We will show how this impacted the results of the analysis.</p>
 							<i>Dataset Size</i>
-							<p>This dataset is relatively large in the dog data world, with 27,541 dogs represented, 1,751 of which have associated 
-							cancer records.  It is on the smaller size for common datasets within the areas of human healthcare and cancer.  
-							For example, the National Cancer Institute provides a number of key datasets ranging in size from 1,000 to 44,000 patients 
-							(<a href="https://datacommons.cancer.gov/data#key-datasets" target="_blank" rel="noopener noreferrer">https://datacommons.cancer.gov/data#key-datasets</a>.   
-							And compared to datasets that are used in general with many of the machine learning approaches we used, particularly the neural networks, 
-							this is a relatively small dataset. </p>
+							<p>
+								This dataset is relatively large in the dog data world, with 27,541 dogs represented, 1,751 of which have associated 
+								cancer records.  It is on the smaller size for common datasets within the areas of human healthcare and cancer.  
+								For example, the National Cancer Institute provides a number of key datasets ranging in size from 1,000 to 44,000 patients 
+								(<a href="https://datacommons.cancer.gov/data#key-datasets" target="_blank" rel="noopener noreferrer">https://datacommons.cancer.gov/data#key-datasets</a>.   
+								And compared to datasets that are used in general with many of the machine learning approaches we used, particularly the neural networks, 
+								this is a relatively small dataset. 
+							</p>
 							
 							<i>Healthcare Data Related Challenges</i>
-							<p>Because we were dealing with a disease that appears over time, typically during a diagnosis at a veterinarian visit, 
-							we structured the data in a time based way, taking the medical records for each dog, adding the cancer diagnosis 
-							(when there was one), and essentially ending up with a time series based dataset.  However, we still maintained 
-							the “static” or non-time based data about the dog as well, such as the gender, whether it was neutered or not, 
-							and other similar static data points.  Having data structured in this way presents a number of challenges for 
-							our analysis that is common in the medical field, as well as any other field with varying numbers of time series 
-							over varying dates mixed with static data.  These relatively unique challenges include:</p>
+							<p>
+								Because we were dealing with a disease that appears over time, typically during a diagnosis at a veterinarian visit, 
+								we structured the data in a time based way, taking the medical records for each dog, adding the cancer diagnosis 
+								(when there was one), and essentially ending up with a time series based dataset.  However, we still maintained 
+								the “static” or non-time based data about the dog as well, such as the gender, whether it was neutered or not, 
+								and other similar static data points.  Having data structured in this way presents a number of challenges for 
+								our analysis that is common in the medical field, as well as any other field with varying numbers of time series 
+								over varying dates mixed with static data.  These relatively unique challenges include:</p>
 							<ol>
 								<li>You are working with multiple streams of measurement that are often sparse and irregularly (and informatively) sampled.</li>
 								<li>It is often necessary to forecast multiple outcomes rather than a single outcome, and these outcomes themselves may change over time since dog participants with one chronic disease typically develop other long-term conditions.</li>
@@ -155,76 +166,76 @@
 							  </ol>
 							<i>Ethical Considerations</i>
 							<p>
-							As with any datasets collected from individuals, there are numerous ethical considerations, particularly when it pertains 
-							to privacy.  In the human healthcare industry, in most countries are the world, data privacy is even protected by laws 
-							with serious repercussions if the data is shared in improper ways as defined by those laws.  However, dog healthcare 
-							data does not share the same protective laws, and so in theory, there is no legal barrier to sharing this data in 
-							a much broader way than you could legally with human healthcare data.  The Dog Aging Project however has taken a 
-							similar approach to this data as is typically taken in the healthcare industry, through the anonymization of the data 
-							and removing any other telling fields, like the name of the dogs and specific addresses.
+								As with any datasets collected from individuals, there are numerous ethical considerations, particularly when it pertains 
+								to privacy.  In the human healthcare industry, in most countries are the world, data privacy is even protected by laws 
+								with serious repercussions if the data is shared in improper ways as defined by those laws.  However, dog healthcare 
+								data does not share the same protective laws, and so in theory, there is no legal barrier to sharing this data in 
+								a much broader way than you could legally with human healthcare data.  The Dog Aging Project however has taken a 
+								similar approach to this data as is typically taken in the healthcare industry, through the anonymization of the data 
+								and removing any other telling fields, like the name of the dogs and specific addresses.
 							</p>
 							
 							<h3>Dataset</h3>
 							<p>
-							The DAP dataset provides data from the baseline survey of owners of 27,541 living companion dogs that 
-							were enrolled in the DAP as of December 21, 2020.  There are 77,576 temporal-based healthcare records, or just under 
-							3 records per dog, as well as an additional 1,751 cancer diagnosis records.  Survey questions covered the history of 
-							the cancer or tumors, including organ sites and histologic type.  We combined multiple data tables in this dataset so 
-							that we have the sequence of healthcare visits for each dog, removing any dog with less than 4 sequence entries.  
-							This reduced our dataset to 40,712 time-based records, with each row containing both static and temporal data.  
-							In addition, we set up the data in a “forward” looking way, so that we can predict future occurrences of cancer 
-							based on the current health status of the dog.  This will be discussed further in future sections.  The dataset 
-							contains several hundred datapoints about both the dog and the dog's owner, but omits any personally identifiable information.  
-							The DAP dataset is stored on the Google Cloud Platform, and can be accessed through the Terra workspace at the Broad 
-							Institute of MIT and Harvard.
+								The DAP dataset provides data from the baseline survey of owners of 27,541 living companion dogs that 
+								were enrolled in the DAP as of December 21, 2020.  There are 77,576 temporal-based healthcare records, or just under 
+								3 records per dog, as well as an additional 1,751 cancer diagnosis records.  Survey questions covered the history of 
+								the cancer or tumors, including organ sites and histologic type.  We combined multiple data tables in this dataset so 
+								that we have the sequence of healthcare visits for each dog, removing any dog with less than 4 sequence entries.  
+								This reduced our dataset to 40,712 time-based records, with each row containing both static and temporal data.  
+								In addition, we set up the data in a “forward” looking way, so that we can predict future occurrences of cancer 
+								based on the current health status of the dog.  This will be discussed further in future sections.  The dataset 
+								contains several hundred datapoints about both the dog and the dog's owner, but omits any personally identifiable information.  
+								The DAP dataset is stored on the Google Cloud Platform, and can be accessed through the Terra workspace at the Broad 
+								Institute of MIT and Harvard.
 							</p>
 							
 							<h3>Current State of Human Healthcare Machine Learning</h3>
 							<p>
-							As mentioned, machine learning usage in human healthcare has advanced rapidly in recent years, paving the way for new and 
-							deeper insights into how data can be used to improve human healthcare.  The primary goal of this portion of this project 
-							is to take one of the machine learning innovations in human healthcare and attempt to apply it to dog healthcare data, 
-							with the hopes of finding deeper insights that can help both canine and human care.   One area of healthcare that has 
-							rapidly advanced in recent years is using disease data to forecast disease trajectories, which is often used with 
-							cancer research.  Since cancer is also a common disease among canines, being the leading cause of canine morbidity 
-							and mortality<a href="#ref4">&#x2074;,</a><a href="#ref5">&#x2075;</a>, and our dataset has cancer-specific data collected, 
-							we focused on one of the latest approaches to forecasting disease trajectories, the Attentive State Space Model (ASSM), 
-							and applied it to our dog cancer/health dataset.   The ASSM is a relatively robust approach to forecasting, applying 
-							a memoryful state transition that depends on the patient's entire clinical history, can handle both static and temporal data, 
-							and is interpretable and directly usable by the clinician in a medical setting. The deep learning component is based on 
-							recurrent neural networks (RNNs) that are meant to capture more complex state dynamics, and provide the memoryful state 
-							mentioned above.  This allows the model to learn hidden disease states from observational data in an unsupervised fashion.  
-							In addition, because our dataset suffers from imbalance, we used an advanced synthetic data generator that can generate 
-							complex datasets with both static and temporal data points, as well as data that “progresses” with interdependencies 
-							across the different points of time.  It uses both supervised and unsupervised training methods that compete in an 
-							adversarial fashion to produce the new synthetic data points.  This model, called TimeGANs, is another advancement 
-							in the field of healthcare that we can utilize when applying our models to dog health data.  
+								As mentioned, machine learning usage in human healthcare has advanced rapidly in recent years, paving the way for new and 
+								deeper insights into how data can be used to improve human healthcare.  The primary goal of this portion of this project 
+								is to take one of the machine learning innovations in human healthcare and attempt to apply it to dog healthcare data, 
+								with the hopes of finding deeper insights that can help both canine and human care.   One area of healthcare that has 
+								rapidly advanced in recent years is using disease data to forecast disease trajectories, which is often used with 
+								cancer research.  Since cancer is also a common disease among canines, being the leading cause of canine morbidity 
+								and mortality<a href="#ref4">&#x2074;,</a><a href="#ref5">&#x2075;</a>, and our dataset has cancer-specific data collected, 
+								we focused on one of the latest approaches to forecasting disease trajectories, the Attentive State Space Model (ASSM), 
+								and applied it to our dog cancer/health dataset.   The ASSM is a relatively robust approach to forecasting, applying 
+								a memoryful state transition that depends on the patient's entire clinical history, can handle both static and temporal data, 
+								and is interpretable and directly usable by the clinician in a medical setting. The deep learning component is based on 
+								recurrent neural networks (RNNs) that are meant to capture more complex state dynamics, and provide the memoryful state 
+								mentioned above.  This allows the model to learn hidden disease states from observational data in an unsupervised fashion.  
+								In addition, because our dataset suffers from imbalance, we used an advanced synthetic data generator that can generate 
+								complex datasets with both static and temporal data points, as well as data that “progresses” with interdependencies 
+								across the different points of time.  It uses both supervised and unsupervised training methods that compete in an 
+								adversarial fashion to produce the new synthetic data points.  This model, called TimeGANs, is another advancement 
+								in the field of healthcare that we can utilize when applying our models to dog health data.  
 							</p>
 
 							<i>Forecasting disease trajectories</i>
 							<p>
-							Chronic diseases such as cancer and endocrine diseases (which includes thyroid and diabetes) progress slowly throughout 
-							a dog participant's lifetime.  This progression demonstrates “stages” that are typically shown through veterinary visits 
-							and diagnosis. One area in human healthcare that is growing rapidly is precision medicine, which focuses on the forecasting 
-							of personalized disease trajectories by observing the patterns found in the temporal relationships between related diseases.  
-							The goal here is to build a similar disease progression model for dogs from their healthcare records, to be able to provide 
-							personalized dynamic forecasts for each dog participant.  In addition, this will enable us to identify new insights regarding 
-							dog disease progression mechanisms at the population level, at various sub-group levels like breeds, and at a personalized level.
+								Chronic diseases such as cancer and endocrine diseases (which includes thyroid and diabetes) progress slowly throughout 
+								a dog participant's lifetime.  This progression demonstrates “stages” that are typically shown through veterinary visits 
+								and diagnosis. One area in human healthcare that is growing rapidly is precision medicine, which focuses on the forecasting 
+								of personalized disease trajectories by observing the patterns found in the temporal relationships between related diseases.  
+								The goal here is to build a similar disease progression model for dogs from their healthcare records, to be able to provide 
+								personalized dynamic forecasts for each dog participant.  In addition, this will enable us to identify new insights regarding 
+								dog disease progression mechanisms at the population level, at various sub-group levels like breeds, and at a personalized level.
 							</p>
 							<p>
-							This kind of forecasting in a time series scenario introduces a number of challenges.  Healthcare data typically contains 
-							a large number of streams of measurement that tend to be sparse and irregularly sampled.  You typically have to forecast 
-							multiple outcomes, rather than just one, and those outcomes may even change over time as a dog participant with one chronic 
-							disease is likely to develop other long-term complications.  A key challenge in this environment is that the timing of the 
-							diagnosis is often not a reliable indication of the timing of the disease onset.  And similar to humans, dogs exhibit a 
-							wide heterogeneity of physiologies and characteristics that can lead to a breadth of patterns that need to be identified.
+								This kind of forecasting in a time series scenario introduces a number of challenges.  Healthcare data typically contains 
+								a large number of streams of measurement that tend to be sparse and irregularly sampled.  You typically have to forecast 
+								multiple outcomes, rather than just one, and those outcomes may even change over time as a dog participant with one chronic 
+								disease is likely to develop other long-term complications.  A key challenge in this environment is that the timing of the 
+								diagnosis is often not a reliable indication of the timing of the disease onset.  And similar to humans, dogs exhibit a 
+								wide heterogeneity of physiologies and characteristics that can lead to a breadth of patterns that need to be identified.
 							</p>
 							<p>
-							We will look at three different approaches to this problem.  First, we will apply the wide variety of traditional 
-							binary classification machine learning models to simply predict if a dog has cancer based on their current conditions.  
-							Second, we will use what is considered the most current approach (in human healthcare) for making disease trajectory 
-							forecasts, a Markovina state-space model.  Almost all current models for disease progression are based on variations 
-							of the hidden markov model (HMM).  Here are some example models currently in use in the field:
+								We will look at three different approaches to this problem.  First, we will apply the wide variety of traditional 
+								binary classification machine learning models to simply predict if a dog has cancer based on their current conditions.  
+								Second, we will use what is considered the most current approach (in human healthcare) for making disease trajectory 
+								forecasts, a Markovina state-space model.  Almost all current models for disease progression are based on variations 
+								of the hidden markov model (HMM).  Here are some example models currently in use in the field:
 							</p>
 							<ul>
 								<li>C. H. Jackson, L. D. Sharples, S. G. Thompson, S. W. Duffy, and E. Couto. Multistate markov models for disease 
@@ -238,30 +249,30 @@
 									International Conference on Machine Learning, 2017. <a href="http://proceedings.mlr.press/v70/alaa17a/alaa17a.pdf">http://proceedings.mlr.press/v70/alaa17a/alaa17a.pdf</a></li>
 							</ul>
 							<p>
-							The models provide an easily interpretable disease dynamic that can be summarized through a single matrix of probabilities 
-							describing transition rates about the disease states.  These models do provide the patient with useful predictions of risk 
-							for the progression of their disease, but they struggle to provide a clinician with an interpretable representation of disease pathology.   
-							These models also simplify inference because they factorize in a way that makes efficient passing of messages backward and forward.  
-							Unfortunately, memoryless Markov models assume that the patient's current state separates the future trajectory from their clinical history, 
-							making these models incapable of properly explaining the heterogeneity in the patients' progression trajectories.  
-							This is a crucial part of explaining complex chronic disease progressions that have multiple diseases.
+								The models provide an easily interpretable disease dynamic that can be summarized through a single matrix of probabilities 
+								describing transition rates about the disease states.  These models do provide the patient with useful predictions of risk 
+								for the progression of their disease, but they struggle to provide a clinician with an interpretable representation of disease pathology.   
+								These models also simplify inference because they factorize in a way that makes efficient passing of messages backward and forward.  
+								Unfortunately, memoryless Markov models assume that the patient's current state separates the future trajectory from their clinical history, 
+								making these models incapable of properly explaining the heterogeneity in the patients' progression trajectories.  
+								This is a crucial part of explaining complex chronic disease progressions that have multiple diseases.
 							</p>
 							<p>
-							In order to address these many challenges, our third and final approach will be to work with one of the newer approaches 
-							to forecasting disease trajectories, called Attentive State-Space Models, based on this paper:
+								In order to address these many challenges, our third and final approach will be to work with one of the newer approaches 
+								to forecasting disease trajectories, called Attentive State-Space Models, based on this paper:
 							</p>
 							<ul>
 								<li>Ahmed M Alaa and Mihaela van der Schaar. Attentive State-Space Modeling of Disease Progression.  
 									33rd Conference on Neural Information Information Processing Systems, 2019. <a href="https://papers.nips.cc/paper/2019/file/1d0932d7f57ce74d9d9931a2c6db8a06-Paper.pdf ">https://papers.nips.cc/paper/2019/file/1d0932d7f57ce74d9d9931a2c6db8a06-Paper.pdf</a></li>
 							</ul>
 							<p>
-							This model addresses the memoryless states by providing a memoryful state transition that depends on the patient's 
-							entire clinical history.  According to the paper for this model, this is “the first deep probabilistic model that 
-							provides clinically meaningful latent representations, with non-Markovian state dynamics that can be made arbitrarily 
-							complex while remaining interpretable.”  This key distinction is intended to provide clinicians with a model that is 
-							interpretable and delivers on the predictive power of deep learning models.  The deep learning component is based on 
-							recurrent neural networks (RNNs) that are meant to capture more complex state dynamics, and provide the memoryful state 
-							mentioned above.  This allows the model to learn hidden disease states from observational data in an unsupervised fashion.
+								This model addresses the memoryless states by providing a memoryful state transition that depends on the patient's 
+								entire clinical history.  According to the paper for this model, this is “the first deep probabilistic model that 
+								provides clinically meaningful latent representations, with non-Markovian state dynamics that can be made arbitrarily 
+								complex while remaining interpretable.”  This key distinction is intended to provide clinicians with a model that is 
+								interpretable and delivers on the predictive power of deep learning models.  The deep learning component is based on 
+								recurrent neural networks (RNNs) that are meant to capture more complex state dynamics, and provide the memoryful state 
+								mentioned above.  This allows the model to learn hidden disease states from observational data in an unsupervised fashion.
 							</p>
 
 							<h3>Approach #1 - Predicting Cancer Using Traditional Machine Learning Algorithms</h3>
@@ -277,8 +288,8 @@
 
 							<i>First Round of Analysis</i>
 							<p>
-							For each of the data approaches, we used classification models to do binary classification.  We started the analysis with 
-							a broad search across 13 different types of models for a baseline comparison of model performance with this data, including:
+								For each of the data approaches, we used classification models to do binary classification.  We started the analysis with 
+								a broad search across 13 different types of models for a baseline comparison of model performance with this data, including:
 							</p>
 							<ul>
 								<li>Logistic Regression</li>
@@ -297,33 +308,31 @@
 							</ul>
 							<i>Initial Models - Comparison (Round 1)</i>
 							<p>
-							It is important to note at this point what our key metrics were to determine the success of these models.
-							Given that we are focused on cancer, it is clearly important to minimize missing a prediction of cancer
-							when the dog actually has it.  This is called a FALSE-NEGATIVE.  We ultimately decided that Recall gave us
-							the best chance of reducing FALSE-NEGATIVES.  Often, this meant more FALSE-POSITIVES, where we are saying 
-							the dog has cancer, but it does not.  But after careful consideration, we decided this was the best trade 
-							off in this particular case.  We will talk more about this later, when we also considered the 
-							Precision-Recall-Curve Area-Under-the-Curve (PRC AUC), but still came back to Recall as our primary metric.
-							So while we will look at other metrics with these charts, we will ulimately select models that give us the best
-							recall.  
+								It is important to note at this point what our key metrics were to determine the success of these models.
+								Given that we are focused on cancer, it is clearly important to minimize missing a prediction of cancer
+								when the dog actually has it.  This is called a FALSE-NEGATIVE.  We ultimately decided that Recall gave us
+								the best chance of reducing FALSE-NEGATIVES.  Often, this meant more FALSE-POSITIVES, where we are saying 
+								the dog has cancer, but it does not.  But after careful consideration, we decided this was the best trade 
+								off in this particular case.  We will talk more about this later, when we also considered the 
+								Precision-Recall-Curve Area-Under-the-Curve (PRC AUC), but still came back to Recall as our primary metric.
+								So while we will look at other metrics with these charts, we will ulimately select models that give us the best
+								recall.  
 							</p>
 							<p>
-							The following chart summarizes the initial results with no data synthesizing, and just a general approach to predictions from
-							the data (just a direct prediction on if the dog has cancer at the present data point time):
-							</p>
-							<!-- <span class="image main"><img src="images/general-data-round1-modeltests.png" alt="" /></span> -->
+								The following chart summarizes the initial results with no data synthesizing, and just a general approach to predictions from
+								the data (just a direct prediction on if the dog has cancer at the present data point time):
 							<span class="image fit">
 								<figure>
-									<img src="images/general-data-round1-modeltests.png" alt="" width="709" height="291"/>
+									<img src="images/general-data-round1-modeltests.png" alt=""/>
 									<figcaption><b>Fig.4 - GREEN - #1 performance for that metric, LIGHT GREEN - #2, YELLOW - #3, LIGHT YELLOW - #4</b>
 									</figcaption>
 								  </figure>
 							</span>
+							</p>
 							<p>
-							As you can see, Decision Trees are performing the best with a recall score of 0.5638, and Random Forest Not too far behind
-							with 0.5556.  But in general these are fairly low scores.  What happens when we use SMOTE to balance the data through synthesizing
-							the minority class (dogs with cancer)?
-							<!-- <span class="image right"><img src="images/general-data-round2-modeltests.png" alt="" /></span> -->
+								As you can see, Decision Trees are performing the best with a recall score of 0.5638, and Random Forest Not too far behind
+								with 0.5556.  But in general these are fairly low scores.  What happens when we use SMOTE to balance the data through synthesizing
+								the minority class (dogs with cancer)?
 							<span class="image fit">
 								<figure>
 									<img src="images/general-data-round2-modeltests.png" alt="" />
@@ -331,57 +340,39 @@
 									</figcaption>
 								  </figure>
 							</span>
-							<p>We have increased the recall score to 0.8025 for Ridge Regression, 0.7963 with Linear Kernel based SVC, and 0.7922 
-							with logistic regression. Furthermore, we see significant improvements in the recall score across all of the models.
-							For example, the Gradient Boost Classifier jumped from 0.0041 to 0.6687.
 							</p>
 							<p>
-							Unfortunately, we see a significant drop off in recall when we use the "forward step" approach to the data.  Here are those
-							results for comparison, with Ridge Regression and Linear Kernel SVC also performing the best in these cases:
+								We have increased the recall score to 0.8025 for Ridge Regression, 0.7963 with Linear Kernel based SVC, and 0.7922 
+								with logistic regression. Furthermore, we see significant improvements in the recall score across all of the models.
+								For example, the Gradient Boost Classifier jumped from 0.0041 to 0.6687.
 							</p>
-							<!-- <span class="image right"><img src="images/general-data-round3-modeltests.png" alt="" /></span> -->
-							<span class="image right">
-								<figure>
-									<img src="images/general-data-round3-modeltests.png" alt="" width="319" height="257" />
-									<figcaption>Fig.5 - Green indicates the best performing models for each metric.<br />
-												Lighter green indicates the 2nd best performance.<br />
-												Yellow indicates the third best performance.
-									</figcaption>
-								  </figure>
-							</span>
-							<!-- <span class="image right"><img src="images/general-data-round4-modeltests.png" alt="" /></span> -->
-							<span class="image right">
-								<figure>
-									<img src="images/general-data-round4-modeltests.png" alt="" width="319" height="257" />
-									<figcaption>Fig.6 - Green indicates the best performing models for each metric.<br />
-												Lighter green indicates the 2nd best performance.<br />
-												Yellow indicates the third best performance.
-									</figcaption>
-								  </figure>
-							</span>
-							As you can see, blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
-							blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
-							blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
-							blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
-
-							</p>
+							<p>
+								Unfortunately, we see a significant drop off in recall when we use the "forward step" approach to the data.  Here are those
+								results for comparison, with Ridge Regression and Linear Kernel SVC also performing the best in these cases:
 							
-							<i>Final Comparison</i>
-							<p>
-							Ultimately, the best predictive performance among these models came from the "general" data pattern version,
-							but with using SMOTE to synthesize and balance the minority class with the majority class:
-							<!-- <span class="image fit"><img src="images/general-data-round2-modeltests.png" alt="" /></span> -->
 							<span class="image fit">
 								<figure>
-									<img src="images/genera2-data-round2-modeltests.png" alt="" width="319" height="257" />
-									<figcaption>Fig.7 - Green indicates the best performing models for each metric.<br />
-												Lighter green indicates the 2nd best performance.<br />
-												Yellow indicates the third best performance.
+									<img src="images/general-data-round3-modeltests.png" alt=""/>
+									<figcaption><b>Fig.4 - GREEN - #1 performance for that metric, LIGHT GREEN - #2, YELLOW - #3, LIGHT YELLOW - #4</b>
+									</figcaption>
+								  </figure>
+							</span>
+							<span class="image fit">
+								<figure>
+									<img src="images/general-data-round4-modeltests.png" alt="" />
+									<figcaption><b>Fig.4 - GREEN - #1 performance for that metric, LIGHT GREEN - #2, YELLOW - #3, LIGHT YELLOW - #4</b>
 									</figcaption>
 								  </figure>
 							</span>
 							</p>
-							
+							<p> 
+								Ultimately, the best predictive performance among these models came from the "general" data pattern version,
+								but with using SMOTE to synthesize and balance the minority class with the majority class.  Given these results, 
+								we move forward to round two where we will apply grid searches to several of the better performing models to 
+								see how much more we can optimize their hyperparameters.  
+							</p>
+							<p>
+							STRERAIGHT.
 							</p>
 
 
