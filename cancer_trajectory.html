@@ -805,13 +805,7 @@
 								better than our results.  And in fact, when we ran an analysis of the predictive power for 
 								previous time steps, we saw little based on our initial training:
 							</p>
-							<span class="image right">
-								<figure>
-									<img src="images/nogans-timesteps.png" alt=""/>
-									<figcaption><b><Fig class="27"></Fig> - Time Steps</b>
-									</figcaption>
-								  </figure>
-							</span>
+							
 							<p>
 								We then ran the ASSM with synthesized data from the entire DAP dataset (not just the minority class).  
 								This reduced the log-likehood to -1.4e+05.  And then finally, we ran the ASSM model with the balanced 
@@ -828,8 +822,15 @@
 							</p>
 							<span class="image right">
 								<figure>
+									<img src="images/nogans-timesteps.png" alt=""/>
+									<figcaption><Fig class="27">time step</Fig>
+									</figcaption>
+								  </figure>
+							</span>
+							<span class="image right">
+								<figure>
 									<img src="images/minority-timesteps.png" alt=""/>
-									<figcaption><b><Fig class="28"></Fig> - Time steps</b>
+									<figcaption><b><Fig class="28">what happens</Fig> - Time steps</b>
 									</figcaption>
 								  </figure>
 							</span>
