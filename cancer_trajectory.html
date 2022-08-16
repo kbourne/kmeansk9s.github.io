@@ -805,21 +805,6 @@
 								better than our results.  And in fact, when we ran an analysis of the predictive power for 
 								previous time steps, we saw little based on our initial training:
 							</p>
-							
-							<p>
-								We then ran the ASSM with synthesized data from the entire DAP dataset (not just the minority class).  
-								This reduced the log-likehood to -1.4e+05.  And then finally, we ran the ASSM model with the balanced 
-								minority class (from the TimeGANs synthesized data), which resulted in a log likelihood of -1.1e+02.  
-								This represents a significant improvement over the original ASSM training, as well as compared to 
-								the cystic fibrosis analysis (8.0e+05) conducted by the author of the model.  In fact, the results 
-								of the cystic fibrosis analysis by their training of the ASSM was considered significantly better 
-								than any other model they compared to, which are models that are currently in use in the field and 
-								considered the most advanced applications of this disease trajectory approach.  We credit this 
-								improvement in large part to the balancing of the minority class through the use of the TimeGANs 
-								synthesized data, as evident in the improved scores as the data was added.  As you see in this chart, 
-								our model is now using data from multiple previous states to provide more accurate predictions in 
-								upcoming states:
-							</p>
 							<span class="image right">
 								<figure>
 									<img src="images/nogans-timesteps.png" alt=""/>
@@ -834,6 +819,21 @@
 									</figcaption>
 								  </figure>
 							</span>
+							<p>
+								We then ran the ASSM with synthesized data from the entire DAP dataset (not just the minority class).  
+								This reduced the log-likehood to -1.4e+05.  And then finally, we ran the ASSM model with the balanced 
+								minority class (from the TimeGANs synthesized data), which resulted in a log likelihood of -1.1e+02.  
+								This represents a significant improvement over the original ASSM training, as well as compared to 
+								the cystic fibrosis analysis (8.0e+05) conducted by the author of the model.  In fact, the results 
+								of the cystic fibrosis analysis by their training of the ASSM was considered significantly better 
+								than any other model they compared to, which are models that are currently in use in the field and 
+								considered the most advanced applications of this disease trajectory approach.  We credit this 
+								improvement in large part to the balancing of the minority class through the use of the TimeGANs 
+								synthesized data, as evident in the improved scores as the data was added.  As you see in this chart, 
+								our model is now using data from multiple previous states to provide more accurate predictions in 
+								upcoming states:
+							</p>
+							
 							<p>
 								In addition, this can be compared to the HMM model score where we saw a validation score of -5.6E+4.
 							</p>
