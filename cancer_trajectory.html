@@ -673,8 +673,8 @@
 								model must find the hidden internal states Z.  The hidden states are not observed directly.  The model 
 								is trained on the observations, and then the predict method is tasked with finding the most likely 
 								state sequence corresponding to the testing “observations” fed to the model.  The model can be “scored” 
-								(i.e. evaluated) with a log likelihood loss function. In our case, we obtained a loss of 7.2E+4, and 
-								the validation score was even higher at 5.6E+4.  These loss functions are comparable to the ASSM model 
+								(i.e. evaluated) with a log likelihood loss function. In our case, we obtained a loss of -7.2E+4, and 
+								the validation score was even higher at -5.6E+4.  These loss functions are comparable to the ASSM model 
 								we will evaluate in a moment.
 							</p>
 							<h3>3rd Approach - Cutting Edge Healthcare ML Approaches</h3>
@@ -777,6 +777,103 @@
 								Learns hidden disease states from observational data in an unsupervised fashion making 
 								it suitable for dog health data where it is seldom annotated with “labels” indicating 
 								true health state.
+							</p>
+							<p>
+								We used the TimeGANs model to bring the minority class (dog's with cancer records) in balance with 
+								the majority class.  We use a PCA plot and a t-SNE plot to visually indicate how synthesized data 
+								is similar, but not exact, to the original data:
+							</p>
+							<span class="image right">
+								<figure>
+									<img src="images/timegans-minority-pca.png" alt=""/>
+									<figcaption><b>Fig.25 - XGBoost Confusion Matrix - General Data Approach</b>
+									</figcaption>
+								  </figure>
+							</span>
+							<span class="image right">
+								<figure>
+									<img src="images/timegans-minority-tsne.png" alt=""/>
+									<figcaption><b>Fig.26 - XGBoost Confusion Matrix - Forward Step Data Approach</b>
+									</figcaption>
+								  </figure>
+							</span>
+							<p>
+								Using the log likelihood as an evaluation metric for performance, we trained the ASSM model 
+								on just the general data, with no synthesized data, and was able to reduce the log likelihood 
+								to -2.7e+10.  We can compare this to the public example of the model running on a Cystic 
+								Fibrosis dataset, that was able to reduce the log likelihood to -8.0e+05, which is significantly 
+								better than our results.  And in fact, when we ran an analysis of the predictive power for 
+								previous time steps, we saw little based on our initial training:
+							</p>
+							<span class="image right">
+								<figure>
+									<img src="images/nogans-timesteps.png" alt=""/>
+									<figcaption><b><Fig class="27"></Fig> - Time Steps</b>
+									</figcaption>
+								  </figure>
+							</span>
+							<p>
+								We then ran the ASSM with synthesized data from the entire DAP dataset (not just the minority class).  
+								This reduced the log-likehood to -1.4e+05.  And then finally, we ran the ASSM model with the balanced 
+								minority class (from the TimeGANs synthesized data), which resulted in a log likelihood of -1.1e+02.  
+								This represents a significant improvement over the original ASSM training, as well as compared to 
+								the cystic fibrosis analysis (8.0e+05) conducted by the author of the model.  In fact, the results 
+								of the cystic fibrosis analysis by their training of the ASSM was considered significantly better 
+								than any other model they compared to, which are models that are currently in use in the field and 
+								considered the most advanced applications of this disease trajectory approach.  We credit this 
+								improvement in large part to the balancing of the minority class through the use of the TimeGANs 
+								synthesized data, as evident in the improved scores as the data was added.  As you see in this chart, 
+								our model is now using data from multiple previous states to provide more accurate predictions in 
+								upcoming states:
+							</p>
+							<span class="image right">
+								<figure>
+									<img src="images/minority-timesteps.png" alt=""/>
+									<figcaption><b><Fig class="28"></Fig> - Time steps</b>
+									</figcaption>
+								  </figure>
+							</span>
+							<p>
+								In addition, this can be compared to the HMM model score where we saw a validation score of -5.6E+4.
+							</p>
+							<h3>Summary</h3>
+							<p>
+								It seems clear from the 3 approaches that more sophisticated models are needed to tackle the high 
+								complexity of healthcare data, whether it is for humans or dogs.  The 1st approach, utilizing more 
+								traditional binary classifiers to predict if a dog has cancer or not falls short, not just in the 
+								predictive power it lacked, but in the granularity of the feedback it can provide clinicians about 
+								the stages of the disease.  However, the Random Tree model did offer up insights into what features
+								 in the dataset had the most predictive power.  Perhaps with more data, we can obtain even better 
+								 predictive results, and this in turn, with the help of the machine learning model interpretation 
+								 related functions (like the feature importance function for Random Forest), can help guide 
+								 veterinarians in making recommendations for dog companion care.  The “forward step” data approach, 
+								 where we were predicting future steps with current time steps, seemed to hold promise, particular 
+								 in how it gives owners more advanced notice on what issues to look out for.  But it required even 
+								 more data and is currently falling far short of providing useful insight into helping dogs get ahead 
+								 of and combat cancer.
+							</p>
+							<p>
+								The 3rd approach shown here, the Attentive State Space Model, shows some real potential for helping 
+								to understand the different states of a disease.  It certainly showed powerful predictive powers in 
+								the context of our dog cancer dataset, achieving a very low log likelihood, approaching zero.  However, 
+								the data is set up in a way that is not conducive to a more thorough understanding of the cancer 
+								states of these dog participants, with few temporal factors included like heart rate, weight change, 
+								and blood pressure, as well as very little data on the cancer, such as tumor size and growth.  
+								The dataset seems to support very broad predictions, like cancer is likely present or not, but not 
+								nearly to the degree that is intended with this model in its original healthcare context.  It would 
+								be helpful for the Dog Aging Project to collect more thorough temporal health data on each of the 
+								dog participants to enable a more thorough analysis of how the disease progresses over time, and 
+								what factors are most relevant to reduce the likelihood of the disease. 
+							</p>
+							<p>
+								The overall goal of applying an advanced healthcare-related machine learning technique to a dog health 
+								dataset was achieved.  It gave useful insight into what is needed in the future to provide the same 
+								in-depth analysis that you see being placed in the human healthcare world.  And it is believed by 
+								many in the field that understanding dog health, in many ways benefits both the dog health and 
+								human healthcare industry significantly.  
+							</p>
+							<p>
+								
 							</p>
 
 							<br />
