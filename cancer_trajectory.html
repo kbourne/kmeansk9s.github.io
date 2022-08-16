@@ -677,6 +677,108 @@
 								the validation score was even higher at 5.6E+4.  These loss functions are comparable to the ASSM model 
 								we will evaluate in a moment.
 							</p>
+							<h3>3rd Approach - Cutting Edge Healthcare ML Approaches</h3>
+							<p>
+								This is actually a combination of two cutting edge techniques recently shared with the machine 
+								learning healthcare community, an advanced GANs model that synthesizes data and then the disease 
+								trajectory model.  As we saw, oversampling with synthetic data using SMOTE was an important 
+								technique in improving the performance of the traditional ML models.  But in healthcare, data 
+								is not just simple datapoints.  To truly synthesize data in this field, you need to replicate 
+								the sequences naturally, with different numbers of sequences, with a lot of interdependence 
+								between the rows of data for each individual patient and often combining static and temporal data.  
+								Approaches like SMOTE do not have this capability, so we have to use a new, more sophisticated 
+								model called TimeGANs. 
+							</p>
+							<i>Synthetic Data Generation with TimeGANs</i>
+							<p>
+								Similar to many datasets in the general healthcare field, there is a lack of large datasets 
+								for dog-related health.  Even though we have access to one of the largest datasets available, 
+								we still only have data on 27,541 dogs, and for each dog, our longitudinal data represents a 
+								relatively small number of entries, typically between 1 and 8 for each canine.  This particular 
+								analysis focuses on cancer, of which we only have 1,751 data points, making this a very 
+								imbalance dataset.  One of the key ways to address imbalanced data is to synthesize more 
+								minority class data and balance the dataset.  This effort will focus on generating this 
+								synthetic dog cancer health records based on the data we currently have.  It is based on 
+								this paper:
+							</p>
+							<ul>
+								<li>Yoon, Jinsung, Jarrett, Daniel, and van der Schaar, Mihaela. Time-series Generative Adversarial Networks. Advances in Neural Information Processing Systems, 2019 <a href="https://papers.nips.cc/paper/2019/file/c9efe5f26cd17ba6216bbe2a7d26d490-Paper.pdf" target="_blank" rel="noopener noreferrer">https://papers.nips.cc/paper/2019/file/c9efe5f26cd17ba6216bbe2a7d26d490-Paper.pdf</a></li>
+							</ul>
+							<p>
+								The challenge with this dataset is that much of the health related data is in a large 
+								array of individual time-series sequences (representing each dog and the number of health 
+								related events recorded at different times).  So our generative model has to account for 
+								temporal dynamics of the sequences in this dataset, maintaining the original relationships 
+								between all of the variables across time.  Many of the generative adversarial networks (GANs) 
+								in use today do not account for these temporal correlations.  There are supervised models for
+								 sequence prediction, which give you more control over the network dynamics, but these are 
+								 inherently deterministic.   So we looked for a model that can address these deficiencies, 
+								 giving us enough control over the network dynamics, while also accounting for the temporal
+								  correlations and doing so in a generative approach. This model combines the flexibility of
+								   an unsupervised paradigm with the control of a supervised model, using a learned embedding
+								    space jointly optimized for both.  Using adversarial objectives, the network is focused 
+									on adhering to the dynamics of the training data during the sampling process. 
+							</p>
+							<p>
+								The TimeGANs approach is a generative model that is trained to account for and preserve the 
+								temporal dynamics inherent in the sequences.  It uses an unsupervised adversarial loss off
+								 both real and synthetic sequences, while also including a stepwise supervised loss using 
+								 the original data as supervision, which explicitly encourages the model to capture the 
+								 stepwise conditional distributions in the data.  While other approaches might just 
+								 determine if the data is real or synthetic, this approach also accounts for the temporal 
+								 dependencies inherent in the sequences.  In other words, it utilizes the real sequences
+								  to learn the transitions in the sequence from each data point to the next.  An embedding
+								   network is then introduced to provide a reversible mapping between features and latent
+								    representation, reducing the high-dimensionality of the adversarial learning space. 
+									 This reflects that temporal dynamics of highly complex systems like our dog health
+									  data sequences are often driven by fewer and lower-dimensional factors of variation.  
+									  The supervised loss is optimized through the joint training of both the embedding and 
+									  the generator networks, so that the latent space promotes parameter efficiency and is 
+									  specifically conditioned to facilitate the generator in learning temporal relationships.  
+									  Lastly, the framework is generalized to handle mixed-data, to account for both static and 
+									  time-series data at the same time, which is common among many datasets.  
+							</p>
+							<i>Forecasting disease trajectories</i>
+							<p>
+								Chronic diseases such as cancer and endocrine diseases (which includes thyroid and diabetes) 
+								progress slowly throughout a dog participant's lifetime.  This progression demonstrates “stages”
+								 that are typically shown through veterinary visits and diagnosis. One area in human healthcare 
+								 that is growing rapidly is precision medicine, which focuses on the forecasting of personalized
+								  disease trajectories by observing the patterns found in the temporal relationships between 
+								  related diseases.  The goal here is to build a similar disease progression model for dogs 
+								  from their healthcare records, to be able to provide personalized dynamic forecasts for 
+								  each dog participant.   In addition, this will enable us to identify new insights regarding 
+								  dog disease progression mechanisms at the population level, at various sub-group levels
+								   like breeds, and at a personalized level. 
+							</p>
+							<p>
+								This kind of forecasting in a time series scenario introduces a number of challenges.  
+								Healthcare data typically contains a large number of streams of measurement that tend to be 
+								sparse and irregularly sampled.  You typically have to forecast multiple outcomes, rather 
+								than just one, and those outcomes may even change over time as a dog participant with one 
+								chronic disease is likely to develop other long-term complications.  A key challenge in this 
+								environment is that the timing of the diagnosis is often not a reliable indication of the 
+								timing of the disease onset.  And similar to humans, dogs exhibit a wide heterogeneity of
+								 physiologies and characteristics that can lead to a breadth of patterns that need to be 
+								 identified.  In order to address these many challenges, we are also going to work with
+								  a newer approach to forecasting disease trajectories, called Attentive State-Space Models.  
+								  This model addresses the memoryless states by providing a memoryful state transition that 
+								  depends on the patient's entire clinical history.  According to the paper for this model, 
+								  this is “the first deep probabilistic model that provides clinically meaningful latent 
+								  representations, with non-Markovian state dynamics that can be made arbitrarily complex
+								   while remaining interpretable.”  This key distinction is intended to provide clinicians
+								    with a model that is interpretable and delivers on the predictive power of deep 
+									learning models.  The deep learning component is based on recurrent neural networks
+									 (RNNs) that are meant to capture more complex state dynamics, and provide the memoryful 
+									 state mentioned above.  This allows the model to learn hidden disease states from
+									  observational data in an unsupervised fashion.  
+							</p>
+							<p>
+								Learns hidden disease states from observational data in an unsupervised fashion making 
+								it suitable for dog health data where it is seldom annotated with “labels” indicating 
+								true health state.
+							</p>
+
 							<br />
 							<br />
 							<br />
