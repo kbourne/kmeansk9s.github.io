@@ -21,7 +21,6 @@ width="900" height="650"/></p>
 width="900" height="650" /></p>
 <p>&nbsp;</p>
 <p>The above chart describes a different picture from the view of owner income, which indicated that the largest group of responses came from those in the top income group. Instead, in the case of the income quartiles, the largest income group (Quartile 4) is now the least frequent group in then data. The vast majority of responses come from Quartiles 1 and 2, which are the lower median income quartiles.</p>
-<p>&nbsp;</p>
 <p>To analyze whether certain health conditions may be more prevalent in certain income quartiles, we performed a Chi-Squared analysis on the grouped data. Similar to our Chi-Squared analysis against owner income, we identified differences within groups that exceeded a significant p-value. However, these differences were very small, despite being differences among the median income quartiles. The health conditions which returned significant results included cancer (p = 0.00004), infectious disease (p = 0.000), oral health conditions (p = 0.00576), and toxin consumption (p = 0.00477). Again, while our Chi Squared analysis identified differences within groups, the differences within groups were largely negligible and did not truly suggest a relationship between the median income of the neighborhood and the health of the dogs in the study.</p>
 <p>&nbsp;</p>
 <p><img style="display: block; margin-left: auto; margin-right: auto;" src="https://drive.google.com/uc?export=view&amp;id=1V5uC4kzow97Ba9Rg9QYGdtNet5mJ208w" 
@@ -37,8 +36,84 @@ width="900" height="650"/></p>
 width="900" height="650"/></p>
 <p>&nbsp;</p>
 <p>Ultimately, it would appear that the prevalence of the different health conditions in our data set seems pretty evenly distributed across owners of all income groups, and even different median incomes. This is in contrast to our initial hypothesis that dogs in wealthier incomes would be healthier than dogs owned by owners with lower incomes, or that dogs living in more affluent neighborhoods would be healthier.</p>
-<p>&nbsp;</p>
 <p>That said, there are many potential confounds in our data set. For example, this analysis simply looks into the prevalence of dog health conditions across different income groups. It is possible that dogs of certain income groups may encounter certain health conditions at an earlier age compared to other income groups. This would be an interesting follow up study, as the current analysis focused on whether the health condition was reported at all for a given dog. Similar to humans, as dogs age they are likely to experience some deleterious health conditions, although it is possible that these health conditions may be encountered differently based on environment, care, experience, etc.</p>
+<p>&nbsp;</p>
+<h1><strong>Question 2 &ndash; Does the “source” of the dog influence the health conditions reported in the study?</strong></h1>
+<p>In addition to investigating wealth as a predictor of dog health, we also decided to investigate whether the source of a dog might act as a predictor of the health conditions reported in the study. It is possible that dogs spending time in a shelter, or have been abandoned, may have been at greater risk for health conditions, or may have received less care than dogs that had been acquired at a young age directly from a professional breeder. Thus, we hypothesized that dogs acquired from certain sources might present the incidence of certain health conditions at a greater rate.</p>
+<p>Our first step was to analyze the frequency of the different sources reported in the data. It quickly became clear that the dogs in the data set were typically acquired from one of two sources – either directly from a breeder, or through a rescue group or shelter. All other groups were present in the data at such a lower frequency that we decided to focus our analysis on dogs acquired through either of these 2 sources.</p>
+<p><img style="display: block; margin-left: auto; margin-right: auto;" src="https://drive.google.com/uc?export=view&amp;id=1F5QijFMBLW1PKrtKguC1Ch52ZU1m7LPw" 
+width="900" height="650"/></p>
+<p>To analyze differences between these groups, we again performed a chi-squared test to determine whether any of the health conditions reported in the study were more frequent in either group. Although certain health conditions returned significant p-values but negligible differences between the two sources, a few interesting results were identified:</p>
+<ul>
+<li>Infectious disease was reported more frequently in adopted dogs (30%) than dogs acquired from a breeder (25%).</li>
+<li>Oral health conditions were reported more frequently in adopted dogs (30%) than dogs acquired from a breeder (24%).</li>
+<li>Trauma was reported more frequently in adopted dogs (31%) than dogs acquired from a breeder (24%).</li>
+</ul>
+<p>Our chi-squared test results indicate that for certain health conditions, there seem to be significant differences in reported incidence between dogs acquired from a breeder vs. those acquired from a rescue group or shelter. The below charts show the normalized difference in frequency between dogs acquired from a breeder vs a shelter for dogs impacted by infectious disease, oral health conditions, or trauma.</p>
+<p><img style="display: block; margin-left: auto; margin-right: auto;" src="https://drive.google.com/uc?export=view&amp;id=1yq7lMKHdClHAKiyt9a5IIDmpUV8qv1Qf" 
+width="900" height="650"/></p>
+<p><img style="display: block; margin-left: auto; margin-right: auto;" src="https://drive.google.com/uc?export=view&amp;id=1lRoQGWrqrnkWPV_DFgBsBbFixRqaFfXu" 
+width="900" height="650"/></p>
+<p><img style="display: block; margin-left: auto; margin-right: auto;" src="https://drive.google.com/uc?export=view&amp;id=1dH4JVPEflXfcaVI0yGo-gVtJQmAr0-qn" 
+width="900" height="650"/></p>
+<p>Due to these identified differences, we attempted to build a Machine Learning model to predict whether a given dog may experience one of these health conditions. We began with Trauma, which showed the greatest difference in reported frequency between adopted dogs (31%) and dogs acquired through a breeder (24%). As a first step, we reviewed the different dog demographic attributes in the data set for any potential correlation with the presence of reported trauma.</p>
+<p>Unfortunately, dog demographic attributes did not show much sufficient correlation with trauma. This suggests that dog demographic information in the data set does not have much of a relationship with the presence of trauma, even though trauma is more present in adopted dogs than dogs acquired through a breeder. The dog demographic variables showing the strongest absolute value in correlation coefficient include the following:</p>
+<table style="border-style: solid;">
+    <tbody>
+    <tr>
+    <td width="264">
+    <p>Variable</p>
+    </td>
+    <td width="168">
+    <p>Correlation with Trauma</p>
+    </td>
+    </tr>
+    <tr>
+    <td width="264">
+    <p>dd_alternate_recent_residence5_weeks&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+    </td>
+    <td width="168">
+    <p>-0.666667</p>
+    </td>
+    </tr>
+    <tr>
+    <td width="264">
+    <p>dd_alternate_recent_residence4_weeks&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+    </td>
+    <td width="168">
+    <p>-0.346410</p>
+    </td>
+    </tr>
+    <tr>
+    <td width="264">
+    <p>dd_alternate_recent_residence3_weeks&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+    </td>
+    <td width="168">
+    <p>0.334807</p>
+    </td>
+    </tr>
+    <tr>
+    <td width="264">
+    <p>dd_activities_search_and_rescue&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+    </td>
+    <td width="168">
+    <p>-0.171320</p>
+    </td>
+    </tr>
+    <tr>
+    <td width="264">
+    <p>dd_birth_year&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+    </td>
+    <td width="168">
+    <p>-0.147815</p>
+    </td>
+    </tr>
+    </tbody>
+    </table>
+<p>The top 3 variables showing the strongest correlation with the presence of Trauma have to do with the amount of time a dog has spent an in alternate residence, though still with the same owner. The fourth variable reports whether a dog&rsquo;s regular activity involves search and rescue efforts, while the fifth variable report the actual year that a dog was born. These data points do not seem to be indicative of whether a dog is adopted or acquired through a breeder, nor would they seem helpful in predicting whether a dog that has been adopted or picked up from a breeder would subsequently report trauma as a health condition.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
 <p>&nbsp;</p>
 <h2>References</h2>
 <p>1 - Sommeiller, E, Price, M. (2018, July 19) <em><span class="title-presub">The new gilded age</span><span class="subtitle">Income inequality in the U.S. by state, metropolitan area, and county. Economics Policy Institute. </span></em>https://www.epi.org/publication/the-new-gilded-age-income-inequality-in-the-u-s-by-state-metropolitan-area-and-county/</p>
