@@ -118,8 +118,8 @@ width="900" height="500"/></p>
 <table style="height: 108px; width: 0%; border-collapse: collapse; border-style: solid; margin-left: auto; margin-right: auto;" border="1">
 <tbody>
 <tr style="height: 18px;">
-<td style="width: 50%; height: 18px;">Feature</td>
-<td style="width: 50%; height: 18px;">Correlation</td>
+<td style="width: 50%; height: 18px;"><strong>Feature</strong></td>
+<td style="width: 50%; height: 18px;"><strong>Correlation</strong></td>
 </tr>
 <tr style="height: 18px;">
 <td style="width: 50%; height: 18px;">dd_alternate_recent_residence5_weeks</td>
@@ -147,8 +147,8 @@ width="900" height="500"/></p>
 <table style="height: 108px; width: 0%; border-collapse: collapse; border-style: solid; margin-left: auto; margin-right: auto;" border="1">
 <tbody>
 <tr style="height: 18px;">
-<td style="width: 50%; height: 18px;">Feature</td>
-<td style="width: 50%; height: 18px;">Correlation</td>
+<td style="width: 50%; height: 18px;"><strong>Feature</strong></td>
+<td style="width: 50%; height: 18px;"><strong>Correlation</strong></td>
 </tr>
 <tr style="height: 18px;">
 <td style="width: 50%; height: 18px;">dd_alternate_recent_residence4_weeks</td>
@@ -176,8 +176,8 @@ width="900" height="500"/></p>
 <table style="height: 108px; width: 0%; border-collapse: collapse; border-style: solid; margin-left: auto; margin-right: auto;" border="1">
 <tbody>
 <tr style="height: 18px;">
-<td style="width: 50%; height: 18px;">Feature</td>
-<td style="width: 50%; height: 18px;">Correlation</td>
+<td style="width: 50%; height: 18px;"><strong>Feature</strong></td>
+<td style="width: 50%; height: 18px;"><strong>Correlation</strong></td>
 </tr>
 <tr style="height: 18px;">
 <td style="width: 50%; height: 18px;">dd_alternate_recent_residence5_weeks</td>
@@ -252,10 +252,18 @@ width="900" height="500"/></p>
 </tr>
 </tbody>
 </table>
-	<h3>Results - Infectious Disease Classifier</h3>
+	<h3>Results - Overall</h3>
 	<p>In order to evaluate the performance of each model, we compared the accuracy and F1 scores obtained by the model against a dummy classifier that would simply predict the dominant class within the data. The classes in the data were particularly unbalanced, with the reported presence of the health conditions being the minority class. For example, in the Infectious Disease test data used to evaluate the performance of the Random Forest model, 5054 records (72%) of records belonged to the majority class with the dog not report infectious disease.</p>
-	<p><img style="display: block; margin-left: auto; margin-right: auto;" src="https://drive.google.com/uc?export=view&amp;id=1P5vnlya3vLS51tkZqqH1V5f8ymRFQLq-" 
+	<p>Clearly, our models were trained on an unbalanced dataset. For each of the below Random Forest classifiers, a dummy classifier that predicted the dominant class (the health condition being absent) achieved higher accuracy scores than the Random Forest Models. As a result, we chose the f1-score as the more accurate means of assessing our model, since a high accuracy score could be achieved just using the dummy classifier. Given the imbalanced data, we also felt it important that misclassifications in terms of missed positives is important, since the purpose of the model is to be able to predict the presence of the health condition.</p>
+	<p>Unfortunately, each of our classification models achieved modest results, at best.
+	<h3>Results - Infectious Disease Classifier</h3>
+	<p>Our Random Forest model achieved mediocre performance when attempting to classify the presence of infectious disease in our test data. Overall, the model was outperformed by the dummy classifier, and achieved very low Precision and Recall, especially with regards to the minorty class. As can be seen in the below Confusion Matrix, the model misclassified much of the time across both classes. Most importantly, the model only correctly labeled 895 out of the 1,946 positive cases (labelled "2" in the Confusion Matrix plot below) in the test data. The model also incorrecly labeled 2,046 cases of truly negative records as being positive.</p>
+	<p>In comparison, the dummy classifier achieved an overall accuracy score of 72% by simply guessing the dominant class at all times. Of course, while the overall accuracy of the dummy classifier may seem adequate, the dummy classifier missed all instances of positive cases in the test data.</p>	
+	<p><img style="display: block; margin-left: auto; margin-right: auto;" src="https://drive.google.com/uc?export=view&amp;id=1G16jO4chpeRJ5MZpCjr8EXiB-wKYCMyk" 
 width="900" height="500"/></p>
+	<p><img style="display: block; margin-left: auto; margin-right: auto;" src="https://drive.google.com/uc?export=view&amp;id=17IMEyz7_WSpCRARxFO0bGDq_I-TYtF42" 
+width="900" height="500"/></p>
+	
 	<h3>Results - Oral Health Conditions Classifier</h3>
 	<p><img style="display: block; margin-left: auto; margin-right: auto;" src="https://drive.google.com/uc?export=view&amp;id=1RH0Yg_qtALaoMxft9mWs2khLO7rQ3ODm" 
 width="900" height="500"/></p>
