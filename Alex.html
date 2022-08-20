@@ -281,15 +281,12 @@ width="900" height="500"/></p>
     <p><img style="display: block; margin-left: auto; margin-right: auto;" src="https://drive.google.com/uc?export=view&amp;id=18wYVOVcXw0CZW-DaIt5_j0V4cCXKVBdI" 
 width="900" height="500"/></p>
 	<h2>Discussion - Source of Acquisition and Dog Health</h2> 
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>	
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
+    <p>Our chi-squared analysis of acquisition source and health conditions in dogs revealed significant differences in the prevalence of infectious disease, oral conditions, and trauma. Specifically, we found that adopted dogs present these conditions more frequently than dogs acquired from a breeder in our data set from the Dog Aging Project. However, our Random Forest classification models performed poorly against our test data and did not achieve accuracy, precision, or recall scores that would suggest the models were useful, even against our limited data set. It seems safe to say that these models would not be useful in the real world.</p>
+    <p>One major limitation of our models is that they were trained with very limited data. The overall data set from the Dog Aging Project contained only 27k records in total, which in many cases would not be a large enough data set without the presence of very strongly correlated variables. This results in even smaller data sets when only the records for each health condition were present. For example, out of the full data set, only ~7.6k records reported the rpesence of oral health conditions, and only 5.7k of those applied to dogs that were either adopted or picked up from a breeder. It seems likely that the training of our data would have suffered from the small data sets used to train them. Future efforts at building similar models would likely benefit from a much larger data set.</p>
+    <p>Another major challenge in building machine learning models to predict the presence of a health condition is working with minority classes that are particularly small. For example, although the data set contained 21k records for dogs that were adopted or acquired from a breeder, only 5.8k records reported the presence of infectious disease. The number of records in the majority class (no reported infectious disease) is about three times larger, with 15.3k records. In this case, the machine learning models had very limited data to learn from when seeking to label the minority class. Our efforts in building an effective model likely would benefitted from the use a technique to improve learning from the minority class. Current techniques incldue the use of SMOTE (Synthetic Minority Oversampling Technique), which is leveraged in our Cancer Trajectory machine learning models to improve performance.</p>
+    <p>Furthermore, our approach leveraged a very limited set of features to use when training the model. The data set from the Dog Aging Project included a small overall number of records (27k), but included more than 600 individual features. Early on in our efforts, we encountered issues in determining relevant features to use when building machine learning models. In the above approach, we limited the set of features for analysis to dog demographic data. This seemed more relevant, and in some cases did produce moderate correlation scores with the predicted health condition. However, it is possible that other features in the Dog Aging Project Owner data set (or other data sets from the Dog Aging Project) may have produced better outcomes when seeking to predict the presence of certain health conditions.</p>
+    <p>Ultimately, future efforts to predict health conditions should seek to leverage larger data sets (more records, not necessarily more features) as well as advanced methods for leveraging the data from the minority class.</p>
+    <p>&nbsp;</p>
 <p>&nbsp;</p>
 <h2>References</h2>
 <p>1 - Sommeiller, E, Price, M. (2018, July 19) <em><span class="title-presub">The new gilded age</span><span class="subtitle">Income inequality in the U.S. by state, metropolitan area, and county. Economics Policy Institute. </span></em>https://www.epi.org/publication/the-new-gilded-age-income-inequality-in-the-u-s-by-state-metropolitan-area-and-county/</p>
