@@ -273,7 +273,12 @@ width="600" height="450"/></p>
 	<p><img style="display: block; margin-left: auto; margin-right: auto;" src="https://drive.google.com/uc?export=view&amp;id=1RH0Yg_qtALaoMxft9mWs2khLO7rQ3ODm" 
 width="900" height="500"/></p>
 	<h3>Results - Trauma Classifier</h3>
-	<p><img style="display: block; margin-left: auto; margin-right: auto;" src="https://drive.google.com/uc?export=view&amp;id=18wYVOVcXw0CZW-DaIt5_j0V4cCXKVBdI" 
+    <p>Once again, our Random Forest model achieved middling performance when attempting to classify the presence of trauma in our test data. The model returned an overall accuracy of only 53%, compared to the dummy classifier's 73% accuracy obtained by simply guessing the majority class value ("0" indicating no trauma) in all cases. As can be seen in the confusion matrix below, the Random Forest classifier mislabeled many cases - incorrectly labeling 757 records as negative (~40% of the truly positive records in the test data), and incorrectly labeling 2,523 records as positive which were truly negative (~50% of truly negative cases).</p>
+    <p>This suggests that in terms of accuracy, precision, and recall, the model performed poorly and would not be useful in a real world setting.</p>
+	<p><img style="display: block; margin-left: auto; margin-right: auto;" src="https://drive.google.com/uc?export=view&amp;id=1qOwoygQW6CKu_CeyyYu3J773kr3JcCpc" 
+        width="900" height="500"/></p>
+    <p>In terms of feature importance, we can see again that the feature's showing the strongest correlation values with the predictied health condition were not necessarily the most important when making classifications. The feature 'dd_birth_year' was by far the most important of the features leveraged in the model, which demonstrated a very weak correlation with the presence of trauma amongst dogs that were adopted or acquired through a breeder. Similar to the other models discussed above, the performance of this model suggests we should not rely on these feature importance values too much as being critical to predicting the presence of trauma.</p>
+    <p><img style="display: block; margin-left: auto; margin-right: auto;" src="https://drive.google.com/uc?export=view&amp;id=18wYVOVcXw0CZW-DaIt5_j0V4cCXKVBdI" 
 width="900" height="500"/></p>
 	<h2>Discussion - Source of Acquisition and Dog Health</h2> 
 <p>&nbsp;</p>
