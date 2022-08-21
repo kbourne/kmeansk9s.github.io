@@ -19,7 +19,7 @@ The following python dependencies, pip installable from pypi.org, are required t
 
 ## Data Dependencies
 
-The following data files are required to run the associated jupyter notebook
+The following data files are required to run the associated jupyter notebook.
 
 • DAP_2020_CSLB_v1.1.csv
 
