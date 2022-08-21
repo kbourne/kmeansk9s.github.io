@@ -14,12 +14,6 @@ Contents
  * [Why?](#why)
  * [What is in this repo?](#what-is-in-this-repo)
  * [What do I need to run this code?](#runningcode)
- * [Git Integration](#git-integration)
- * [What can I back up?](#what-can-i-back-up)
- * [Configuration](#configuration)
- * [Output Structure](#output-structure)
- * [Reinstalling Dotfiles](#reinstalling-dotfiles)
- * [Want to contribute?](#want-to-contribute)
 
 ### Why?
 
