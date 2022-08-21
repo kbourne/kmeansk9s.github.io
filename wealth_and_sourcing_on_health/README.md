@@ -11,9 +11,7 @@ This analysis leveraged the Owner and Environment data sets from the Dog Aging P
 Contents
 ========
 
- * [Why?](#why)
- * [Installation](#installation)
- * [Usage](#usage)
+ * [Libraries](#Libraries)
  * [Git Integration](#git-integration)
  * [What can I back up?](#what-can-i-back-up)
  * [Configuration](#configuration)
@@ -21,6 +19,20 @@ Contents
  * [Reinstalling Dotfiles](#reinstalling-dotfiles)
  * [Want to contribute?](#want-to-contribute)
 
-### Why?
+### Libraries
 
-blah.
+The following libraries are required to run this code. These can be imported directly into a Python notebook:
+* Pandas (1.3.5 used at the time this report was created)
+* Matplotlib
+* Seaborn
+* Numpy
+* Sklearn
+* * train_test_split
+* * Random Forest Classifier
+* * Classification Report
+* * Confusion Matrix
+* * Linear Regression
+* * Dummy Classifier
+* * Plot_confusion_matrix
+* Scipy
+* * chi2_contingency
