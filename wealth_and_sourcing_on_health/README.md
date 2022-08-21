@@ -1,8 +1,12 @@
 # HEADER
 
-Masters of Applied Data Science Capstone Project
+Wealth and Sourcing on Dog Health
 
 Project description
+
+This analysis leveraged the Owner and Environment data sets from the Dog Aging Project (dogagingproject.org) to analyze potential relationships betweet:
+* Owner income and neighborhood wealth on the presence of health conditions in the data set.
+* Source of acquisition (e.g., breeder, rescue shelter, pet shop) on the prevalence of health conditions in the data set.
 
 Contents
 ========
