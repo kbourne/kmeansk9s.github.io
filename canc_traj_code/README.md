@@ -26,7 +26,7 @@ Contents
 
 ### Why?
 
-I wanted a tool that allows you to:
+It is widely recognized in the veterinary world that dogs provide a unique model for health research that parallels the human environment. Dogs are exposed to similar social and environmental elements as humans, exhibiting increases in many chronic conditions with dynamics similar to human patterns¹. Dogs also have shorter life spans, which allows researchers to observe their entire life course in a much more condensed time frame². Use of machine learning in human healthcare has advanced rapidly in recent years, paving the way for new and deeper insights into how data can be used to improve human healthcare. Due to the similarities between human and dog healthcare, we seek to bring these analytical innovations to dog healthcare, with the hopes of finding deeper insights that can help both canine and human care. This analysis begins a number of traditional machine learning analysis techniques applied to the dataset. It will conclude with the application of two cutting edge techniques that have emerged in human healthcare, but applied to this dog healthcare set as a way to determine how new techniques in a similar field can help this field advance. And last, we should consider the ethical implications of the data obtained from all of these owners and dogs, particularly when it comes to privacy.
 
 + Back up dotfiles _from where they live on the system_.
 + Back up files from _any_ path on the system, not just `$HOME`.
