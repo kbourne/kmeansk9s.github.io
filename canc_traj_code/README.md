@@ -25,6 +25,14 @@ Contents
 
 It is widely recognized in the veterinary world that dogs provide a unique model for health research that parallels the human environment. Dogs are exposed to similar social and environmental elements as humans, exhibiting increases in many chronic conditions with dynamics similar to human patterns¹. Dogs also have shorter life spans, which allows researchers to observe their entire life course in a much more condensed time frame². Use of machine learning in human healthcare has advanced rapidly in recent years, paving the way for new and deeper insights into how data can be used to improve human healthcare. Due to the similarities between human and dog healthcare, we seek to bring these analytical innovations to dog healthcare, with the hopes of finding deeper insights that can help both canine and human care. This analysis begins a number of traditional machine learning analysis techniques applied to the dataset. It will conclude with the application of two cutting edge techniques that have emerged in human healthcare, but applied to this dog healthcare set as a way to determine how new techniques in a similar field can help this field advance. And last, we should consider the ethical implications of the data obtained from all of these owners and dogs, particularly when it comes to privacy.
 
+### What is in this repo?
+---
+
+> **Warning**
+> Be careful running this with elevated privileges. Code execution can be achieved with write permissions on the config file.
+
+In this repo are Jupyter Notebooks that run:
+
 + Back up dotfiles _from where they live on the system_.
 + Back up files from _any_ path on the system, not just `$HOME`.
 + Reinstall them from the backup directory idempotently.
@@ -32,15 +40,9 @@ It is widely recognized in the veterinary world that dogs provide a unique model
 + Copy files on installation and backup, as opposed to symlinking them.
 + Backup package installations in a highly compressed manner
 
+There are also python files that are used by the Notebooks that contain most of the model-related 
+
 And is incredibly fault tolerant and user-protective.
-
-`shallow-backup` is the only tool that checks all of those boxes.
-
-### What is in this repo
----
-
-> **Warning**
-> Be careful running this with elevated privileges. Code execution can be achieved with write permissions on the config file.
 
 #### Method 1: [`pip3`](https://pypi.org/project/shallow-backup/)
 
@@ -101,83 +103,9 @@ Options:
 ```
 
 
-### Git Integration
----
-
-**A Word of Caution**
-
-This backup tool is git-integrated, meaning that you can easily store your backups remotely (on GitHub, for example.) Dotfiles and configuration files may contain sensitive information like API keys and ssh keys, and you don't want to make those public. To make sure no sensitive files are uploaded accidentally, `shallow-backup` creates a `.gitignore` file if it can't find one in the directory. It excludes `.ssh/` and `.pypirc` by default. It's safe to remove these restrictions if you're pushing to a remote private repository, or you're only backing up locally. To do this, you should clear the `.gitignore` file without deleting it.
-
-_If you choose to back up to a public repository, look at every file you're backing up to make sure you want it to be public._
-
-**What if I'd like to maintain a separate repo for my dotfiles?**
-
-`shallow-backup` makes this easy! After making your first backup, `cd` into the `dotfiles/` directory and run `$ git init`. Create a `.gitignore` and a new repo on your favorite version control platform. This repo will be maintained independently (manually) of the base `shallow-backup` repo. Note that you may need to use the `-separate_dotfiles_repo` flag to get this to work, and it may [break some other functionality of the tool](https://github.com/alichtman/shallow-backup/issues/229). It's ok for my use case, though.
-
-Here's a `bash` script that I wrote to [automate my dotfile backup workflow](https://github.com/alichtman/scripts/blob/master/backup-and-update-dotfiles.sh). You can use this by placing it in your `$PATH`, making it executable, and running it.
-
-### What can I back up?
----
-
-By default, `shallow-backup` backs these up.
-
-1. Dotfiles and dotfolders
-    * `.bashrc`
-    * `.bash_profile`
-    * `.gitconfig`
-    * `.pypirc`
-    * `.config/shallow-backup.conf`
-    * `.ssh/`
-    * `.vim/`
-    * `.zshrc`
-
-2. App Config Files
-    * Atom
-    * VSCode
-    * Sublime Text 2/3
-    * Terminal.app
-
-3. Installed Packages
-    * `apm`
-    * `brew` and `cask`
-    * `cargo`
-    * `gem`
-    * `pip`
-    * `pip3`
-    * `npm`
-    * `macports`
-    * `VSCode` Extensions
-    * `Sublime Text 2/3` Packages
-    * System Applications
-
-4. User installed `fonts`.
-
-### Configuration
-
-If you'd like to modify which files are backed up, you have to edit the `JSON` config file, located at `~/.config/shallow-backup.conf`. There are two ways to do this.
-
 1. Select the appropriate option in the CLI and follow the prompts.
 2. Open the file in a text editor and make your changes.
 
-Editing the file in a text editor will give you more control and be faster.
-
-#### Conditional Backup and Reinstallation
-
-> **Warning**
-> This feature allows code execution (by design). If untrusted users can write to your config, they can achieve code execution next time you invoke `shallow-backup` _backup_ or _reinstall_ functions. Starting in `v5.2`, the config file will have default permissions of `644`, and a warning will be printed if others can write to the config.
-
-Every key under dotfiles has two optional subkeys: `backup_condition` and `reinstall_condition`. Both of these accept expressions that will be evaluated with `bash`. An empty string (`""`) is the default value, and is considered to be `True`. If the return value of the expression is `0`, this is considered `True`. Otherwise, it is `False`. This lets you do simple things like preventing backup with:
-
-```javascript
-// Because `$ false` returns 1
-"backup_condition": "false"
-```
-
-And also more complicated things like only backing up certain files if an environment variable is set:
-
-```javascript
-"backup_condition": "[[ -n \"$ENV_VAR\" ]]"
-```
 
 Here's an example config based on my [dotfiles](https://www.github.com/alichtman/dotfiles):
 
@@ -230,10 +158,7 @@ Here's an example config based on my [dotfiles](https://www.github.com/alichtman
 	}
 }
 ```
-
-#### .gitignore
-
-As of `v4.0`, any `.gitignore` changes should be made in the `shallow-backup` config file. `.gitignore` changes that are meant to apply to all directories should be under the `root-gitignore` key. Dotfile specific gitignores should be placed under the `dotfiles-gitignore` key. The original `default-gitignore` key in the config is still supported for backwards compatibility, however, converting to the new config format is strongly encouraged.
+ The original `default-gitignore` key in the config is still supported for backwards compatibility, however, converting to the new config format is strongly encouraged.
 
 #### Output Structure
 ---
@@ -277,14 +202,3 @@ backup_dir/
     └── sublime3_list.txt
 ```
 
-### Reinstalling Dotfiles
-----
-
-To reinstall your dotfiles, clone your dotfiles repo and make sure your shallow-backup config path can be found at either `~/.config/shallow-backup.conf` or `$XDG_CONFIG_HOME/.shallow_backup.conf`. Set the `backup-path` key in the config to the path of your cloned dotfiles. Then run `$ shallow-backup -reinstall-dots`.
-
-When reinstalling your dotfiles, the top level `.git/`, `.gitignore`, `img/` and `README.md` files and directories are ignored.
-
-### Want to Contribute?
----
-
-Check out `CONTRIBUTING.md` and the `docs` directory.
