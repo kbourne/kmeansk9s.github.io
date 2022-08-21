@@ -1,0 +1,2 @@
+model_checkpoint_path: "mlaimRNN_model"
+all_model_checkpoint_paths: "mlaimRNN_model"
