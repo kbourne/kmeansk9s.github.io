@@ -12,7 +12,7 @@ Contents
 ========
 
  * [Why?](#why)
- * [What is in this repo?](#what-is-in-this-repo?)
+ * [What is in this repo](#what-is-in-this-repo)
  * [What do I need to run this code?](#runningcode)
  * [Git Integration](#git-integration)
  * [What can I back up?](#what-can-i-back-up)
@@ -36,7 +36,7 @@ And is incredibly fault tolerant and user-protective.
 
 `shallow-backup` is the only tool that checks all of those boxes.
 
-### What is in this repo?
+### What is in this repo
 ---
 
 > **Warning**
