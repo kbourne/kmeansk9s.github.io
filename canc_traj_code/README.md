@@ -12,8 +12,8 @@ Contents
 ========
 
  * [Why?](#why)
- * [Installation](#installation)
- * [Usage](#usage)
+ * [What is in this repo?](#what-is-in-this-repo?)
+ * [What do I need to run this code?](#runningcode)
  * [Git Integration](#git-integration)
  * [What can I back up?](#what-can-i-back-up)
  * [Configuration](#configuration)
@@ -36,7 +36,7 @@ And is incredibly fault tolerant and user-protective.
 
 `shallow-backup` is the only tool that checks all of those boxes.
 
-### Installation
+### What is in this repo?
 ---
 
 > **Warning**
@@ -56,7 +56,7 @@ $ cd shallow-backup
 $ pip3 install .
 ```
 
-### Usage
+### What do I need to run this code?
 ---
 
 To start the interactive program, simply run `$ shallow-backup`.
