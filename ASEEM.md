@@ -8,9 +8,13 @@ This analysis examines the relationship between spaying/neutering in dogs and th
 The following python dependencies, pip installable from pypi.org, are required to run the associated jupyter notebook.
 
 • scikit-learn
+
 • stargazer
+
 • imbalanced-learn
+
 • altair
+
 • statsmodels
 
 ## Data Dependencies
@@ -18,9 +22,13 @@ The following python dependencies, pip installable from pypi.org, are required t
 The following data files are required to run the associated jupyter notebook
 
 • DAP_2020_CSLB_v1.1.csv
+
 • DAP_2020_HLES_health_condition_v1.1.csv
+
 • DAP_2020_HLES_dog_owner_v1.1.csv
+
 • DAP_2020_HLES_cancer_condition_v1.1.csv
+
 • DAP_2020_ENVIRONMENT_v1.1.csv
 
 
