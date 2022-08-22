@@ -772,11 +772,11 @@
 							</p>
 							<p>
 								Using the log likelihood as an evaluation metric for performance, we trained the ASSM model 
-								on just the general data, with no synthesized data, and was able to reduce the log likelihood 
+								on just the general data, with no synthesized data, and were able to reduce the log likelihood 
 								to -2.7e+10.  We can compare this to the public example of the model running on a Cystic 
 								Fibrosis dataset, that was able to reduce the log likelihood to -8.0e+05, which is significantly 
 								better than our results.  And in fact, when we ran an analysis of the predictive power for 
-								previous time steps, we saw little based on our initial training:
+								previous time steps, we saw little based on our initial training (as shown in fig. 28):
 							</p>
 							<span class="image right">
 								<figure>
@@ -803,13 +803,13 @@
 								than any other model they compared to, which are models that are currently in use in the field and 
 								considered the most advanced applications of this disease trajectory approach.  We credit this 
 								improvement in large part to the balancing of the minority class through the use of the TimeGANs 
-								synthesized data, as evident in the improved scores as the data was added.  As you see in this chart, 
+								synthesized data, as evident in the improved scores as the data was added.  As you see in this chart (fig. 29), 
 								our model is now using data from multiple previous states to provide more accurate predictions in 
-								upcoming states:
+								upcoming states.
 							</p>
 							
 							<p>
-								In addition, this can be compared to the HMM model score where we saw a validation score of -5.6E+4.
+								In addition, this can be compared very favorably to the HMM model score where we saw a validation score of -5.6E+4.
 							</p>
 							<h3>Summary</h3>
 							<p>
@@ -823,9 +823,9 @@
 								 related functions (like the feature importance function for Random Forest), can help guide 
 								 veterinarians in making recommendations for dog companion care.  The “forward step” data approach, 
 								 where we were predicting future steps with current time steps, seemed to hold promise, particular 
-								 in how it gives owners more advanced notice on what issues to look out for.  But it required even 
-								 more data and is currently falling far short of providing useful insight into helping dogs get ahead 
-								 of and combat cancer.
+								 in how it gives owners more advanced notice on what issues to look out for.  But this approach to the data 
+								required even more data and is currently falling far short of providing useful insight into 
+								helping dogs get ahead of and combat cancer.
 							</p>
 							<p>
 								The 3rd approach shown here, the Attentive State Space Model, shows some real potential for helping 
