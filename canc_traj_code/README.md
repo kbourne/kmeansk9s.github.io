@@ -47,4 +47,4 @@ Once you have run the first cell, comment out the lines that have specific versi
 
 At this point, you should be able to run the cells in consecutive order, as they build up data and model definitions.  Be sure to run them in order!
 
-Versions are listed in the requirements.txt file.
+Versions are listed in the <a href="https://github.com/kbourne/kmeansk9s.github.io/blob/main/canc_traj_code/requirements.txt">requirements.txt file</a>.
