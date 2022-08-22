@@ -751,25 +751,26 @@
 								  from their healthcare records, to be able to provide personalized dynamic forecasts for 
 								  each dog participant.   
 							</p>
-							<i>Applying the New Models -</i>
+							<i>Applying the New Models</i>
+							<span class="image right">
+								<figure>
+									<img src="images/timegans-minority-tsne.png" alt=""/>
+									<figcaption><b>Fig.27 - t-SNE Plot - Shows 2D representation of Synthesized Data vs Original Data</b>
+									</figcaption>
+								  </figure>
+							</span>
+							<span class="image right">
+								<figure>
+									<img src="images/timegans-minority-pca.png" alt=""/>
+									<figcaption><b>Fig.26 - PCA Plot - Shows 2D representation of Synthesized Data vs Original Data</b>
+									</figcaption>
+								  </figure>
+							</span>
 							<p>
 								We used the TimeGANs model to bring the minority class (dog's with cancer records) in balance with 
 								the majority class.  We use a PCA plot and a t-SNE plot to visually indicate how synthesized data 
 								is similar, but not exact, to the original data:
-								<span class="image right">
-									<figure>
-										<img src="images/timegans-minority-tsne.png" alt=""/>
-										<figcaption><b>Fig.27 - t-SNE Plot - Shows 2D representation of Synthesized Data vs Original Data</b>
-										</figcaption>
-									  </figure>
-								</span>
-								<span class="image right">
-									<figure>
-										<img src="images/timegans-minority-pca.png" alt=""/>
-										<figcaption><b>Fig.26 - PCA Plot - Shows 2D representation of Synthesized Data vs Original Data</b>
-										</figcaption>
-									  </figure>
-								</span>
+								
 							</p>
 							<p>
 								Using the log likelihood as an evaluation metric for performance, we trained the ASSM model 
