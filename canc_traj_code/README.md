@@ -23,20 +23,20 @@ It is widely recognized in the veterinary world that dogs provide a unique model
 In this repo are Jupyter Notebooks that run:
 
 + _EDA.ipynb_ - A quick, initial look at the data.
-+ _DogCancerShallowMLPredictions.ipynb.ipynb_ - A quick, initial look at the data.
-+ _NN-BinaryClass.ipynb.ipynb_ - A quick, initial look at the data.
-+ _DogCancerTrajectoryPredictions.ipynb_ - A quick, initial look at the data.
++ _DogCancerShallowMLPredictions.ipynb.ipynb_ - Analysis of traditional (shallow) machine learning models.
++ _NN-BinaryClass.ipynb.ipynb_ - Analysis of multi-layer perceptron neural network (deep) machine learning model.
++ _DogCancerTrajectoryPredictions.ipynb_ - Analysis of TimeGANs (for complex synthetic data generation) and Attentive State Space Model and the application of these advanced human healthcare based machine learning models to dog health data
 
 There are also python files that are used by the Notebooks that contain most of the model-related
 
-+ _assm.py_ - A quick, initial look at the data.
-+ _constants.py_ - A quick, initial look at the data.
-+ _data_proc.py_ - A quick, initial look at the data.
-+ _metrics.py_ - A quick, initial look at the data.
-+ _ml_models.py_ - A quick, initial look at the data.
-+ _timegan.py_ - A quick, initial look at the data.
++ _assm.py_ - ASSM related functions
++ _constants.py_ - constants for this project
++ _data_proc.py_ - Data processing related functions
++ _metrics.py_ - evaluation related functions for the TimeGANs
++ _ml_models.py_ - shallow learning related functions
++ _timegan.py_ - TimeGANs related functions
 
-There are also python files that are used by the Notebooks that contain most of the model-related
+The remaining files are a saved version and related files of a trained ASSM model.
 
 ### What do I need to run this code?
 ---
