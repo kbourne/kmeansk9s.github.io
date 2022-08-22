@@ -151,7 +151,7 @@
 								This dataset is relatively large in the dog data world, with 27,541 dogs represented, 1,751 of which have associated 
 								cancer records.  It is on the smaller size for common datasets within the areas of human healthcare and cancer.  
 								For example, the National Cancer Institute provides a number of key datasets ranging in size from 1,000 to 44,000 patients 
-								(<a href="https://datacommons.cancer.gov/data#key-datasets" target="_blank" rel="noopener noreferrer">https://datacommons.cancer.gov/data#key-datasets</a>.   
+								(<a href="https://datacommons.cancer.gov/data#key-datasets" target="_blank" rel="noopener noreferrer">https://datacommons.cancer.gov/data#key-datasets</a>).   
 								And compared to datasets that are used in general with many of the machine learning approaches we used, particularly the neural networks, 
 								this is a relatively small dataset. 
 							</p>
@@ -174,12 +174,13 @@
 							<i>Ethical Considerations</i>
 							<p>
 								As with any datasets collected from individuals, there are numerous ethical considerations, particularly when it pertains 
-								to privacy.  In the human healthcare industry, in most countries are the world, data privacy is even protected by laws 
+								to privacy.  In the human healthcare industry, in most countries around the world, data privacy is even protected by laws 
 								with serious repercussions if the data is shared in improper ways as defined by those laws.  However, dog healthcare 
 								data does not share the same protective laws, and so in theory, there is no legal barrier to sharing this data in 
 								a much broader way than you could legally with human healthcare data.  The Dog Aging Project however has taken a 
 								similar approach to this data as is typically taken in the healthcare industry, through the anonymization of the data 
-								and removing any other telling fields, like the name of the dogs and specific addresses.
+								and removing any other telling fields, like the name of the dogs and specific addresses.  There is also an extensive 
+								effort to inform the participants of their privacy rights and what steps are taken with that data to protect them.
 							</p>
 							
 							<h3>Dataset</h3>
@@ -230,17 +231,10 @@
 								dog disease progression mechanisms at the population level, at various sub-group levels like breeds, and at a personalized level.
 							</p>
 							<p>
-								This kind of forecasting in a time series scenario introduces a number of challenges.  Healthcare data typically contains 
-								a large number of streams of measurement that tend to be sparse and irregularly sampled.  You typically have to forecast 
-								multiple outcomes, rather than just one, and those outcomes may even change over time as a dog participant with one chronic 
-								disease is likely to develop other long-term complications.  A key challenge in this environment is that the timing of the 
-								diagnosis is often not a reliable indication of the timing of the disease onset.  And similar to humans, dogs exhibit a 
-								wide heterogeneity of physiologies and characteristics that can lead to a breadth of patterns that need to be identified.
-							</p>
-							<p>
-								We will look at three different approaches to this problem.  First, we will apply the wide variety of traditional 
-								binary classification machine learning models to simply predict if a dog has cancer based on their current conditions.  
-								Second, we will use what is considered the most current approach (in human healthcare) for making disease trajectory 
+								As mentioned earlier, this kind of forecasting in a time series scenario introduces a number of challenges that these models 
+								are designed to overcome.  We will look at three different approaches to this problem.  First, we will apply the wide variety 
+								of traditional binary classification machine learning models to simply predict if a dog has cancer based on their current 
+								conditions. Second, we will use what is considered the most current approach (in human healthcare) for making disease trajectory 
 								forecasts, a Markovina state-space model.  Almost all current models for disease progression are based on variations 
 								of the hidden markov model (HMM).  Here are some example models currently in use in the field:
 							</p>
@@ -378,7 +372,7 @@
 							</span>
 							</p>
 							<p>
-								Interestingly enough, the results were almost identical, other than the time to fit the model.
+								Interestingly enough, the results using synthesized minotiry data were almost identical, other than the time to fit the model.
 							<span class="image fit">
 								<figure>
 									<img src="images/general-data-round4-modeltests.png" alt=""/>
@@ -471,7 +465,9 @@
 								Forest models are considered to be more interpretable than XGBoost, but this is changing as new approaches, like LIME, are emerging to
 								make models like XGBoost more interpretable.  For this reason, we suggest to continue to monitor the performance of both types of models
 								as new data is added to the dataset. In general though, with the Random Forest recall score of 59.5% and XGBoost recall score of 59.3%, 
-								the scores in general were not very high.
+								the scores in general were not very high.  It should also be noted that we later attempted to use a GridSearchCV (rather than a 
+								HalvingGridSearchCV) across several thousand hyperparameter combinations to try to reduce FP results and address the fitting issues 
+								while maintaining a higher recall, but we were unsuccessful.  
 							</p>
 							<p>
 								The "forward step" data prediction results, which had significantly less data to work with, performed even worse than the "general" data
@@ -547,7 +543,10 @@
 								For XGBoost, we see the Recall score for the general data approach drop from 81.5% (test) to 64.4% (validation), with FNs
 								dropping from 187 (test) to 179 (validation).  For the forward step approach, we see the recall score increase
 								from 56.1% (test) to 67.8% (validation), and the FNs drop from 25 (test) to 19 (validation).  The model is not generalizable to 
-								the new dataset.  
+								the new dataset.  Due to this result, we went back and switched from using HalvingGridSearchCV to using GridSearchCV to
+								try  and obtain a set of hyperparametersthat could avoid this fitting issue, as well as the high FP issues seen earlier. 
+								The Grid Search involved several thousand possible combinations and multiple rounds of optimization that last over 2 days!  
+								Ultimately though, we were unable to find a hyperparameter combination that avoided these issues with XGBoost.
 							</p>
 							<br />
 							<br />
@@ -590,6 +589,11 @@
 								from 61.4% (test) to 67.8% (validation), and the FNs drop from 25 (test) to 19 (validation).  This is not 
 								a large difference, and may just be attributable to the new data differences.  
 							</p>
+							<br />
+							<br />
+							<br />
+							<br />
+							<br />
 							<br />
 							<br />
 							<br />
