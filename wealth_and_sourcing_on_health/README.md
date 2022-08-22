@@ -2,7 +2,7 @@
 
 ## Project description
 
-This analysis leveraged the Owner and Environment data sets from the Dog Aging Project (dogagingproject.org) to analyze potential relationships betweet:
+This analysis leveraged the Owner and Environment data sets from the [Dog Aging Project](dogagingproject.org) to analyze potential relationships betweet:
 * Owner income and neighborhood wealth on the presence of health conditions in the data set.
 * Source of acquisition (e.g., breeder, rescue shelter, pet shop) on the prevalence of health conditions in the data set.
 
@@ -20,7 +20,7 @@ This repository contains documentation, code, and instructions to run the analys
 * this README file with instructions and tips for running the provided code.
 
 ### Data_access
-* The data for this analysis was retrieved from the Dog Aging Project (https://dogagingproject.org/).
+* The data for this analysis was retrieved from the [Dog Aging Project](https://dogagingproject.org/).
     * Note that you must request access to the Dog Aging Project in order to gain access to the data collected through the project.
     * Access to the Dog Aging Project files requires signing a legal agreement.
 
