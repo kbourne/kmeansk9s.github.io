@@ -4,7 +4,7 @@ Masters of Applied Data Science Capstone Project
 
 `CANCER TRAJECTORY ANALYSIS FOR CANCER IN DOGS` focused on exploring the use of machine learning in predicting cancer and its trajectory among companion dogs.
 
-<img src="../images/victor-grabarczyk-x5oPmHmY3kQ-unsplash.jpg" width="340" align="center"> <img src="../images/taylor-kopel-WX4i1Jq_o0Y-unsplash.jpg" width="286" align="center"> <img src="../images/t-r-photography-TzjMd7i5WQI-unsplash.jpg" width="256" align="center"> 
+<img src="../images/victor-grabarczyk-x5oPmHmY3kQ-unsplash.jpg" width="340" align="center"> <img src="../images/taylor-kopel-WX4i1Jq_o0Y-unsplash.jpg" width="286" align="center"> <img src="../images/t-r-photography-TzjMd7i5WQI-unsplash.jpg" width="286" align="center"> 
 
 Contents
 ========
