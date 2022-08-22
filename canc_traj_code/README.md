@@ -15,23 +15,28 @@ Contents
 
 ### Why?
 
-It is widely recognized in the veterinary world that dogs provide a unique model for health research that parallels the human environment. Dogs are exposed to similar social and environmental elements as humans, exhibiting increases in many chronic conditions with dynamics similar to human patterns¹. Dogs also have shorter life spans, which allows researchers to observe their entire life course in a much more condensed time frame². Use of machine learning in human healthcare has advanced rapidly in recent years, paving the way for new and deeper insights into how data can be used to improve human healthcare. Due to the similarities between human and dog healthcare, we seek to bring these analytical innovations to dog healthcare, with the hopes of finding deeper insights that can help both canine and human care. This analysis begins a number of traditional machine learning analysis techniques applied to the dataset. It will conclude with the application of two cutting edge techniques that have emerged in human healthcare, but applied to this dog healthcare set as a way to determine how new techniques in a similar field can help this field advance. And last, we should consider the ethical implications of the data obtained from all of these owners and dogs, particularly when it comes to privacy.
+It is widely recognized in the veterinary world that dogs provide a unique model for health research that parallels the human environment. Dogs are exposed to similar social and environmental elements as humans, exhibiting increases in many chronic conditions with dynamics similar to human patterns. Dogs also have shorter life spans, which allows researchers to observe their entire life course in a much more condensed time frame. Use of machine learning in human healthcare has advanced rapidly in recent years, paving the way for new and deeper insights into how data can be used to improve human healthcare. Due to the similarities between human and dog healthcare, we seek to bring these analytical innovations to dog healthcare, with the hopes of finding deeper insights that can help both canine and human care. This analysis is focused on determining if the application of two cutting edge techniques that have emerged in human healthcare can be applied to dog healthcare with the same success, helping both fields advance. 
 
 ### What is in this repo?
 ---
 
 In this repo are Jupyter Notebooks that run:
 
-+ Back up dotfiles _from where they live on the system_.
-+ Back up files from _any_ path on the system, not just `$HOME`.
-+ Reinstall them from the backup directory idempotently.
-+ Backup and reinstall files conditionally, so you can easily manage dotfiles across multiple systems.
-+ Copy files on installation and backup, as opposed to symlinking them.
-+ Backup package installations in a highly compressed manner
++ _EDA.ipynb_ - A quick, initial look at the data.
++ _DogCancerShallowMLPredictions.ipynb.ipynb_ - A quick, initial look at the data.
++ _NN-BinaryClass.ipynb.ipynb_ - A quick, initial look at the data.
++ _DogCancerTrajectoryPredictions.ipynb_ - A quick, initial look at the data.
 
-There are also python files that are used by the Notebooks that contain most of the model-related 
+There are also python files that are used by the Notebooks that contain most of the model-related
 
-And is incredibly fault tolerant and user-protective.
++ _assm.py_ - A quick, initial look at the data.
++ _constants.py_ - A quick, initial look at the data.
++ _data_proc.py_ - A quick, initial look at the data.
++ _metrics.py_ - A quick, initial look at the data.
++ _ml_models.py_ - A quick, initial look at the data.
++ _timegan.py_ - A quick, initial look at the data.
+
+There are also python files that are used by the Notebooks that contain most of the model-related
 
 ### What do I need to run this code?
 ---
