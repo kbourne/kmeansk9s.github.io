@@ -1,0 +1,6 @@
+dog_id,hs_condition,hs_condition_cause_other_description,hs_condition_is_congenital,hs_condition_other_description,hs_condition_type,hs_diagnosis_month,hs_diagnosis_year,hs_eye_condition_cause,hs_follow_up_ongoing,hs_neurological_condition_vestibular_disease_type,hs_required_surgery_or_hospitalization
+68063,423,NA,FALSE,NA,4,3,2016,NA,TRUE,NA,4
+68063,426,NA,FALSE,NA,4,3,2016,NA,TRUE,NA,4
+68063,712,NA,FALSE,NA,7,3,2016,NA,FALSE,NA,4
+68063,714,NA,FALSE,NA,7,8,2016,NA,TRUE,NA,4
+68063,1617,NA,FALSE,NA,16,2,2017,NA,TRUE,NA,4
