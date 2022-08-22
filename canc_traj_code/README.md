@@ -4,9 +4,7 @@ Masters of Applied Data Science Capstone Project
 
 `CANCER TRAJECTORY ANALYSIS FOR CANCER IN DOGS` focused on exploring the use of machine learning in predicting cancer and its trajectory among companion dogs.
 
-<img src="../images/victor-grabarczyk-x5oPmHmY3kQ-unsplash.jpg" width="400" align="center"> <img src="../images/taylor-kopel-WX4i1Jq_o0Y-unsplash.jpg" width="356" align="center"> 
-
-<!-- ![Shallow Backup GIF Demo](../images/victor-grabarczyk-x5oPmHmY3kQ-unsplash.jpg ) -->
+<img src="../images/victor-grabarczyk-x5oPmHmY3kQ-unsplash.jpg" width="400" align="center"> <img src="../images/taylor-kopel-WX4i1Jq_o0Y-unsplash.jpg" width="356" align="center"> <img src="../images/t-r-photography-TzjMd7i5WQI-unsplash.jpg" width="356" align="center"> 
 
 Contents
 ========
@@ -22,9 +20,6 @@ It is widely recognized in the veterinary world that dogs provide a unique model
 ### What is in this repo?
 ---
 
-> **Warning**
-> Be careful running this with elevated privileges. Code execution can be achieved with write permissions on the config file.
-
 In this repo are Jupyter Notebooks that run:
 
 + Back up dotfiles _from where they live on the system_.
@@ -37,20 +32,6 @@ In this repo are Jupyter Notebooks that run:
 There are also python files that are used by the Notebooks that contain most of the model-related 
 
 And is incredibly fault tolerant and user-protective.
-
-#### Method 1: [`pip3`](https://pypi.org/project/shallow-backup/)
-
-```bash
-$ pip3 install shallow-backup
-```
-
-#### Method 2: Install From Source
-
-```bash
-$ git clone https://www.github.com/alichtman/shallow-backup.git
-$ cd shallow-backup
-$ pip3 install .
-```
 
 ### What do I need to run this code?
 ---
@@ -196,3 +177,22 @@ backup_dir/
     └── sublime3_list.txt
 ```
 
+
+
+> **Warning**
+> Be careful running this with elevated privileges. Code execution can be achieved with write permissions on the config file.
+
+
+#### Method 1: [`pip3`](https://pypi.org/project/shallow-backup/)
+
+```bash
+$ pip3 install shallow-backup
+```
+
+#### Method 2: Install From Source
+
+```bash
+$ git clone https://www.github.com/alichtman/shallow-backup.git
+$ cd shallow-backup
+$ pip3 install .
+```
